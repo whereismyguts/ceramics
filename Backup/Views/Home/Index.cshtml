@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AppHarborMongoDBDemo.Models.Thingy>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thingies</h2>
+<ul>
+@foreach (var thingy in Model)
+{
+	<li>
+		@thingy.Name
+	</li>
+}
+</ul>
+@Html.ActionLink("new", "New")
