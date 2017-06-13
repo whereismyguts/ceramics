@@ -10,13 +10,7 @@ namespace AppHarborMongoDBDemo.Controllers
 
 		public HomeController()
 		{
-
-           
-
 			_collection = Database.GetCollection<Thingy>("Thingies");
-
-
-
 		}
 
 		public ActionResult Index()
