@@ -20,7 +20,7 @@ namespace AppHarborMongoDBDemo.Controllers
 
             return
                 //ConfigurationManager.AppSettings.Get("MONGOHQ_URL") ??
-				ConfigurationManager.AppSettings.Get("MONGOLAB_URI") ??
+				ConfigurationManager.AppSettings.Get("CUSTOM_MONGOLAB_URI") ??
 				"mongodb://localhost/Things";
 		}
 	}
