@@ -6,11 +6,11 @@ namespace AppHarborMongoDBDemo.Controllers
 {
 	public abstract class BaseController : Controller
 	{
-		public MongoDatabase Database
+		public IMongoDatabase Database
 		{
 			get
 			{
-				return MongoDatabase.Create(GetMongoDbConnectionString());
+                return new MongoClient(GetMongoDbConnectionString()).GetDatabase("appharbor_pw3dvl7m");
 			}
 		}
 

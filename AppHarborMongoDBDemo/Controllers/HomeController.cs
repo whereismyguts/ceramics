@@ -6,7 +6,7 @@ namespace AppHarborMongoDBDemo.Controllers
 {
 	public class HomeController : BaseController
 	{
-		private readonly MongoCollection<Thingy> _collection;
+		private readonly IMongoCollection<Thingy> _collection;
 
 		public HomeController()
 		{
@@ -17,7 +17,9 @@ namespace AppHarborMongoDBDemo.Controllers
 		{
 
             //return View(GetMongoDbConnectionString()); // toremove
-            return View(_collection.FindAll());
+
+            var results = _collection.Find(x => x.Name!="").ToList();
+            return View(results);
 		}
 
 		public ActionResult New()
@@ -27,7 +29,7 @@ namespace AppHarborMongoDBDemo.Controllers
 
 		public ActionResult Create(Thingy thingy)
 		{
-			_collection.Insert(thingy);
+			_collection.InsertOne(thingy);
 			return RedirectToAction("Index");
 		}
 	}
