@@ -1,17 +1,18 @@
-﻿@model IEnumerable<AppHarborMongoDBDemo.Models.Thingy>
+﻿@*@model IEnumerable<AppHarborMongoDBDemo.Models.Thingy>*@
+@model string  @*to remove*@
 
 @{
-	ViewBag.Title = "Index";
+	ViewBag.Title = Model;
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Thingies</h2>
-<ul>
+@*<ul>  revert
 @foreach (var thingy in Model)
 {
 	<li>
 		@thingy.Name
 	</li>
 }
-</ul>
+</ul>*@
 @Html.ActionLink("new", "New")

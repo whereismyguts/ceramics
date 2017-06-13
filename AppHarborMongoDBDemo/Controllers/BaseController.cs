@@ -14,7 +14,7 @@ namespace AppHarborMongoDBDemo.Controllers
 			}
 		}
 
-		private string GetMongoDbConnectionString()
+		public  string GetMongoDbConnectionString()
 		{
 			return ConfigurationManager.AppSettings.Get("MONGOHQ_URL") ??
 				ConfigurationManager.AppSettings.Get("MONGOLAB_URI") ??

@@ -10,12 +10,20 @@ namespace AppHarborMongoDBDemo.Controllers
 
 		public HomeController()
 		{
+
+           
+
 			_collection = Database.GetCollection<Thingy>("Thingies");
+
+
+
 		}
 
 		public ActionResult Index()
 		{
-			return View(_collection.FindAll());
+
+            return View(GetMongoDbConnectionString()); // toremove
+            return View(_collection.FindAll());
 		}
 
 		public ActionResult New()
