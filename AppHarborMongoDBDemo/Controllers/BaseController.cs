@@ -16,7 +16,7 @@ namespace AppHarborMongoDBDemo.Controllers
 
 		public  string GetMongoDbConnectionString()
 		{
-
+            return "mongodb://whereismyguts:VisualStudio15@ds115352.mlab.com:15352/sorokin_sad";
             return "mongodb://appharbor_pw3dvl7m:eul4dg6sml88gluo42ur4fg2l6@ds159591.mlab.com:59591/appharbor_pw3dvl7m";
 
 
