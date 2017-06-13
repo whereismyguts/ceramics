@@ -22,7 +22,7 @@ namespace AppHarborMongoDBDemo.Controllers
 		public ActionResult Index()
 		{
 
-            return View(GetMongoDbConnectionString()); // toremove
+         //   return View(GetMongoDbConnectionString()); // toremove
             return View(_collection.FindAll());
 		}
 
