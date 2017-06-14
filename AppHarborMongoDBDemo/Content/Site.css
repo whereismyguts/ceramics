@@ -1,5 +1,4 @@
-body
-{
+body {
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     color: #232323;
@@ -16,60 +15,130 @@ section {
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
-fieldset 
-{
-    border:1px solid #ddd;
-    padding:0 1.4em 1.4em 1.4em;
-    margin:0 0 1.5em 0;
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
 }
 
-legend 
-{
-    font-size:1.2em;
+legend {
+    font-size: 1.2em;
     font-weight: bold;
 }
 
-textarea 
-{
+textarea {
     min-height: 75px;
 }
 
-.editor-label 
-{
+.editor-label {
     margin: 1em 0 0 0;
 }
 
-.editor-field 
-{
-    margin:0.5em 0 0 0;
+.editor-field {
+    margin: 0.5em 0 0 0;
 }
 
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error
-{
+.field-validation-error {
     color: #ff0000;
 }
 
-.field-validation-valid
-{
+.field-validation-valid {
     display: none;
 }
 
-.input-validation-error
-{
+.input-validation-error {
     border: 1px solid #ff0000;
     background-color: #ffeeee;
 }
 
-.validation-summary-errors
-{
+.validation-summary-errors {
     font-weight: bold;
     color: #ff0000;
 }
 
-.validation-summary-valid
-{
+.validation-summary-valid {
     display: none;
+}
+
+
+ 
+.area {
+    stroke: rgba(0, 0, 0, 0.0);
+    stroke-width: 1px;
+    fill: transparent;  
+    display:block;
+    /*outline:1px solid #333;*/
+    
+}   
+  
+    .area:hover {   
+        stroke: black;     
+        stroke-width: 0.1px;
+        fill: rgba(53, 143, 53, 0.42);
+        transition: 0.5s; 
+    }
+     
+    /*.area:hover + .tooltip { 
+    background: #f00 ;
+    transition-delay:0.5s; 
+}*/
+
+.tooltip {
+    transition-delay:0s;
+    opacity:0;     
+    transition:0.5s;
+    font-size:10px;     
+    border: 0px solid #333;
+    border-radius:5px;
+    width: 130px;
+    height: 80px;
+    padding:10px;
+    box-sizing:content-box;
+    background-color: #fff;  
+    position:absolute;
+    box-shadow: 0px 0px 20px #aaa;
+}
+.buy a:hover {
+    background-color: #FF6347;
+}
+
+.buy {
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin:10px;
+
+}  
+
+.buy a {
+    border-radius:5px;   
+    padding:5px;
+    display:inline-block;
+    width:20px;
+    background-color: #FA8072;
+    cursor:pointer;   
+    text-align:center;
+} 
+.price {
+    display:inline-block;
+    font-weight:900;
+    font-size:16px;
+}
+.main-image {
+    width: 700px;
+ display: block;
+    margin: auto;
+    position:relative;   
+}
+    .main-image img { 
+        width:100%;
+    }
+
+.svg-container, .svg-container svg {
+    position:absolute; 
+        top:0; left:0;
+        width:100%; height:100%;
 }

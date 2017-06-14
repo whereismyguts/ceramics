@@ -1,18 +1,75 @@
 ﻿@model IEnumerable<AppHarborMongoDBDemo.Models.Thingy>
 
 
-@{
-	ViewBag.Title = Model;
-	Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "main";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<h2>Thingies</h2>
-<ul>  
-@foreach (var thingy in Model)
-{
-	<li>
-		@thingy.Name
-	</li>
-}
-</ul>
-@Html.ActionLink("new", "New")
+    @*<h2>Thingies</h2>*@
+
+    <div class="main-image">
+        <img src="https://maas.museum/app/uploads/sites/7/2013/07/Pigott-pots.jpg" />
+        <div class="svg-container">
+            <svg>
+                <path id="item2" class="area" xmlns="http://www.w3.org/2000/svg" d="M 37 225 L 75 220 L 140 225 L 150 280 L 120 300 L 70 300 L 20 250 Z" fill="transparent" stroke="#434" />
+
+                <path id="item1" class="area" xmlns="http://www.w3.org/2000/svg" d="M 27 9 L 75 16 L 79 43 L 84 82 L 43 71 L 16 82 L 21 42 Z" fill="transparent" stroke="#434" />
+            </svg>
+        </div>
+    </div>
+    <div class="tooltip" id="tooltip1">
+        Fucking amazing mug. You can fill it whatever you want.
+        <br />
+        <div class="buy">
+            <div class="price">450₽</div> <a> Buy</a>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip2">
+        Holy mother fucking shit! You must to buy this thing!
+        <br />
+        <div class="buy">
+            <div class="price">1050₽</div> <a> Buy</a>
+        </div>
+    </div>
+
+    <ul>
+        @foreach(var thingy in Model) {
+            <li>
+                @thingy.Name
+            </li>
+        }
+    </ul>
+    @Html.ActionLink("new", "New")
+
+    <script>
+        $('.area, .tooltip').mouseenter(
+          function () {
+
+              $(".tooltip").css('transition-delay', '0s');
+              $(".tooltip").css('opacity', '0');
+
+              var id = this.id.replace(/(tooltip)|(item)/, '');
+              var pos = $('#item' + id).position();
+
+              $("#tooltip" + id).css({
+                  top: pos.top + "px",
+                  left: pos.left + 150 + "px",
+                  opacity: 1
+              }).show();
+          })
+
+
+        $('.area, .tooltip').mouseleave(
+          function () {
+              var id = this.id.replace(/(tooltip)|(item)/, '');
+              $("#tooltip" + id).css('transition-delay', '.9s');
+              $('#tooltip' + id).css('opacity', '0');
+              $("#tooltip" + id).css('transition-delay', '0s');
+          }
+        );
+
+    </script>
+
+
