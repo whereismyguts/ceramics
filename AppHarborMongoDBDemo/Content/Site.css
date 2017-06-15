@@ -305,7 +305,7 @@ input, textarea {
 }
 
 .image-container {
-    height: 440px;
+    height: 440px; 
     width:100%;
     margin-bottom:20px;
 }
