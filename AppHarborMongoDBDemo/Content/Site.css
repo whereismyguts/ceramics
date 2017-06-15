@@ -132,10 +132,14 @@ textarea {
     font-size:16px;
 }
 .main-image {
-    width: 900px;
-    display: block;
+    width: 1230px;
+    top: 0;
+    /* left: 0; */
     margin: auto;
-    position:relative;   
+    position:relative;
+    /* right: 0; */
+    position: relative;
+    /* align-content: center; */
 }
 .main-image img { 
     width:100%;
@@ -154,6 +158,7 @@ textarea {
     flex-wrap: wrap;
     width: 1290px;
     margin:auto;
+    justify-content: center;
 }
 
 .tile-item {
@@ -198,14 +203,13 @@ textarea {
     background-color: #dedede;
 }
 .header-menu-item {
-    border-radius: 13px;
-       background-color: #ededed;
+    border-radius: 7px;
+    /* background-color: #ededed; */
     width: 200px;
-    height: 50px;
+    height: 30px;
     margin: 10px;
     text-align:center;
     position:relative;
-    
 }
 a {
 
@@ -214,23 +218,32 @@ a {
     text-decoration:none;   
 }
     .header-menu-item span {
-            line-height: 50px;
-            font-size: 18px;
+            line-height: 28px;
+            font-size: 15px;
     }
 .header-menu {
+     position: absolute;
+     width: 500px;
+     top: 0;
+     left: 0;
+     right: 0;
+     z-index: 1;
      margin:auto;
      display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: center;
-    justify-content: center;
+     display: flex;
+     -webkit-justify-content: center;
+     justify-content: center;
 }
 .logo {
-    width:100px; height:100px;
+    display: none;
+    width:100px;
+    height:100px;
 }
 * {
-    /*outline:1px  dashed #333;*/
+    /* outline:1px  dashed #333; */
 }
 body {
+    margin: 0;
     background-color:#fafafa;
 }
 
