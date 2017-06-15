@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using MongoDB.Driver;
 
-namespace AppHarborMongoDBDemo.Controllers
+namespace AppHarborMongoDBDemo
 {
 	public abstract class BaseController : Controller
 	{
@@ -14,7 +14,7 @@ namespace AppHarborMongoDBDemo.Controllers
 			}
 		}
 
-		public  string GetMongoDbConnectionString()
+		public static  string GetMongoDbConnectionString()
 		{
             //     return "mongodb://appharbor_pw3dvl7m:eul4dg6sml88gluo42ur4fg2l6@ds159591.mlab.com:59591/appharbor_pw3dvl7m";
             //     return "mongodb://whereismyguts:VisualStudio15@ds115352.mlab.com:15352/sorokin_sad"
@@ -24,5 +24,5 @@ namespace AppHarborMongoDBDemo.Controllers
                 ConfigurationManager.AppSettings.Get("CUSTOM_MONGOLAB_URI") ??
 				"mongodb://localhost/Things";
 		}
-	}
+    }
 }

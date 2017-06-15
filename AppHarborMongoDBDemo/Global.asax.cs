@@ -13,12 +13,17 @@ namespace AppHarborMongoDBDemo
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			routes.MapRoute(
+            routes.MapRoute(
+             name: "Item",
+             url: "Item/{id}",
+             defaults: new { controller = "Home", action = "Item" }
+         );
+            routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
-		}
+        }
 
 		protected void Application_Start()
 		{

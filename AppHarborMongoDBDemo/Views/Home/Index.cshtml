@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppHarborMongoDBDemo.Models.Thingy>
+﻿@model IEnumerable<Thingy>
 
 
     @{
@@ -7,6 +7,8 @@
     }
 
     @*<h2>Thingies</h2>*@
+
+    <div class="logo" style="background-image:url(https://cdn.pixabay.com/photo/2013/07/13/10/19/magpie-156987_960_720.png)"></div>
 
     <div class="main-image">
         <img src="https://maas.museum/app/uploads/sites/7/2013/07/Pigott-pots.jpg" />
@@ -33,16 +35,6 @@
             <div class="price">1050₽</div> <a> Buy</a>
         </div>
     </div>
-
-    <ul>
-        @foreach(var thingy in Model) {
-            <li>
-                @thingy.Name
-            </li>
-        }
-    </ul>
-    @Html.ActionLink("new", "New")
-
     <script>
         $('.area, .tooltip').mouseenter(
           function () {
@@ -60,16 +52,15 @@
               }).show();
           })
 
-
         $('.area, .tooltip').mouseleave(
           function () {
               var id = this.id.replace(/(tooltip)|(item)/, '');
-              $("#tooltip" + id).css('transition-delay', '.9s');
+              $("#tooltip" + id).css('transition-delay', '0s');
+              $("#tooltip" + id).css('transition', '0s');
               $('#tooltip' + id).css('opacity', '0');
+              $('#tooltip' + id).css('left', '-100px');
+              $("#tooltip" + id).css('transition', '0.3s');
               $("#tooltip" + id).css('transition-delay', '0s');
           }
         );
-
     </script>
-
-

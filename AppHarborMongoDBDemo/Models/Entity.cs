@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AppHarborMongoDBDemo.Models
+namespace AppHarborMongoDBDemo
 {
 	public class Entity
 	{

@@ -1,0 +1,81 @@
+﻿@model  Thingy
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Thingy> collection = WebDataProvider.Things;
+}
+
+
+<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
+
+<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+
+
+    @foreach(Thingy thingy in collection) {
+        @Html.Partial("~/Views/Shared/_Item.cshtml", thingy);
+        <hr />
+    }
+
+
+<div id="new-item">
+    <h1>Добавить новую штуку</h1>
+    @using(Html.BeginForm("Create", "Manage")) {
+        <p>
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name)
+            @Html.LabelFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description)
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price)
+
+
+            <div id="mulitplefileuploader">Upload</div>
+            <div id="status"></div>
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    }
+</div>
+
+
+
+<script>
+    function RemoveImage(id, elem) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("RemoveImage", "Manage")",
+            data: { id: id },
+            success: function (res) {
+                if (res === "removed") {
+                    elem.remove();
+                }
+            },
+            datatype: "json",
+            traditional: true
+        });
+    }
+    $(document).ready(function () {
+
+   
+
+        var settings = {
+            url: "@Url.Action("RememberImage", "Manage")",
+            method: "POST",
+            allowedTypes: "jpg,png,gif", //doc,pdf,zip
+            fileName: "myfile",
+            multiple: true,
+            onSuccess: function (files, data, xhr) {
+                $("#status").html("<font color='green'>Upload is success</font>");
+                $("#mulitplefileuploader").append('<div class="thumbnail old-image"> <img src="data:image/png;base64, ' + data + '"></div>')
+
+                //$("#status").html(' <div class="grid"> <img src="data:image/png;base64, ' + data + '"></div>');
+            },
+            onError: function (files, status, errMsg) {
+                $("#status").html("<font color='red'>Upload is Failed</font>");
+            }
+        }
+        $("#mulitplefileuploader").uploadFile(settings);
+    });
+</script>
