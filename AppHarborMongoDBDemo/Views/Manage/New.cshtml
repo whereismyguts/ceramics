@@ -2,8 +2,7 @@
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_ManageLayout.cshtml";
-
-    List<Thingy> collection = WebDataProvider.Things;
+    List<Thingy> collection = WebDataProvider.Things();
 }
 
 <div class="items-table">
