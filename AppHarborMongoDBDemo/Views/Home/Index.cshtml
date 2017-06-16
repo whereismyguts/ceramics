@@ -2,7 +2,7 @@
 
 
     @{
-        ViewBag.Title = "main";
+        ViewBag.Title += "|Ващее";
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
 
@@ -35,6 +35,11 @@
             <div class="price">1050₽</div> <a> Buy</a>
         </div>
     </div>
+
+
+
+    @Html.Partial("~/Views/Shared/_ItemsList.cshtml", Model);
+
     <script>
         $('.area, .tooltip').mouseenter(
           function () {

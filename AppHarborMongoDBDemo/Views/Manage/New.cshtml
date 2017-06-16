@@ -1,21 +1,41 @@
 ﻿@model  Thingy
 @{
     ViewBag.Title = "New";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
 
     List<Thingy> collection = WebDataProvider.Things;
 }
 
+<div class="items-table">
+    <h2>Все штуки</h2>
+    <table  cellspacing="0">
+        <thead>
+            <tr><th></th><th></th></tr>
+        </thead>
+        <tbody>
 
-<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
+            @foreach(var thing in collection) {
+                <tr>
+                    <td>@thing.Name</td>
+                    <td>@thing.Price</td>
+                    <td>@thing.Description</td>
+                    <td>
+                        @if(thing.Images != null && thing.Images.Count > 0) {
+                            <img src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
+                        }
+                    </td>
 
-<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+                    <td><a href="/edit/@thing.Id">Редактировать</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-
-    @foreach(Thingy thingy in collection) {
+@*@foreach(Thingy thingy in collection) {
         @Html.Partial("~/Views/Shared/_Item.cshtml", thingy);
         <hr />
-    }
+    }*@
 
 
 <div id="new-item">
@@ -58,24 +78,8 @@
     }
     $(document).ready(function () {
 
-   
 
-        var settings = {
-            url: "@Url.Action("RememberImage", "Manage")",
-            method: "POST",
-            allowedTypes: "jpg,png,gif", //doc,pdf,zip
-            fileName: "myfile",
-            multiple: true,
-            onSuccess: function (files, data, xhr) {
-                $("#status").html("<font color='green'>Upload is success</font>");
-                $("#mulitplefileuploader").append('<div class="thumbnail old-image"> <img src="data:image/png;base64, ' + data + '"></div>')
 
-                //$("#status").html(' <div class="grid"> <img src="data:image/png;base64, ' + data + '"></div>');
-            },
-            onError: function (files, status, errMsg) {
-                $("#status").html("<font color='red'>Upload is Failed</font>");
-            }
-        }
-        $("#mulitplefileuploader").uploadFile(settings);
+
     });
 </script>

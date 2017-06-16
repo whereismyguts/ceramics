@@ -53,7 +53,7 @@ namespace AppHarborMongoDBDemo {
         }
 
 
-       
+
 
         public ActionResult Index() {
 
@@ -78,6 +78,20 @@ namespace AppHarborMongoDBDemo {
             return RedirectToAction("index", "manage");
         }
 
+        public ActionResult Update(string id, Thingy newThingy) {
+            var objId = new ObjectId(id);
+            if(ImagesToAdd.Count > 0)
+                newThingy.Images = ImagesToAdd;
+            else {
+                var oldThing = _collection.Find(x => x.Id == objId).First();
+                newThingy.Images = oldThing.Images;
+            }
+            newThingy.Id = objId;
+            _collection.ReplaceOne(x => x.Id == newThingy.Id, newThingy);
+
+            return RedirectToAction("index", "manage");
+        }
+
         public ActionResult Remove(string id) {
 
             var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
@@ -87,6 +101,15 @@ namespace AppHarborMongoDBDemo {
 
             return RedirectToAction("index", "manage");
         }
+
+        public ActionResult Edit(string id) {
+            //   var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
+            ImagesToAdd.Clear();
+            ObjectId obj = new MongoDB.Bson.ObjectId(id);
+            var thing = _collection.Find(x => x.Id == obj).First();
+            return View(thing);
+        }
+
 
         public ManageController() {
             _collection = Database.GetCollection<Thingy>("Thingies");

@@ -9,26 +9,25 @@
             type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+@{
+    ViewBag.Title = "Авторская керамика|Сорокин сад";
+}
 </head>
 
 <body>
+
+
+
     <div class="header-menu">
-        <a href="/work" class="header-menu-item"><span> Работа </span></a>
-        <a href="/work" class="header-menu-item"><span> Керамика </span></a>
-        <a href="/work" class="header-menu-item"><span> Связаться </span></a>
+        <a href="/work" class="header-menu-item"><span> Процесс </span></a>
+        <a href="/" class="header-menu-item logo"> </a>
+        <a href="/contact" class="header-menu-item"><span> Связаться </span></a>
     </div>
 
     @RenderBody()
 
-    <div class="tiles-container">
-        @for(int i = 0; i < 10; i++) {
-            <a href="/item/59428ffbfaf07933104a0a0b" class="tile-item">
-                <img src="https://static1.squarespace.com/static/52e80969e4b002fc8996b8f1/54f4b27be4b0724ec210a327/57b61f0dd482e9d6d891f991/1471553414968/20160817_122011.jpg" />
-                <div class="tile-item-title">Кружка </div>
-            </a>
-        }
-    </div>
+   
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
     <script>

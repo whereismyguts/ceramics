@@ -12,7 +12,7 @@ namespace AppHarborMongoDBDemo {
 
         public ActionResult Index() {
             //return View(GetMongoDbConnectionString()); // toremove
-            var results = _collection.Find(x => x.Name != "").ToList();
+            var results = _collection.Find(x => x.Name != null && x.Name != "" ).ToList();
             return View(results);
         }
 

@@ -23,10 +23,10 @@
     @{
         string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
         if(controllerName.ToLower() == "manage") {
-            <a class="button" href="manage/remove/@Model.Id" onclick="return confirm('ТОЧНО?')" title="Тут в магазине будет кнопка Купить">Удалить</a>
+            <a class="button" href="/manage/remove/@Model.Id" onclick="return confirm('ТОЧНО?')" title="Тут в магазине будет кнопка Купить">Удалить</a>
         }
         else {
-            <a class="button" href="manage/buy/@Model.Id">Купить</a>
+            <a class="button" href="/buy/@Model.Id">Купить</a>
         }
     }
 </div>

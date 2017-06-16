@@ -1,0 +1,35 @@
+﻿@model  Thingy
+@{
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Item edit</title>
+</head>
+<body style="padding-left:20px;">
+    <h1>Редактирование штуки</h1>
+    @using(Html.BeginForm("Update", "Manage", new { id = Model.Id }, FormMethod.Post, null)) {
+        <p >@Html.TextBoxFor(x => x.Id)</p>
+        <p>
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name)
+            @Html.LabelFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description)
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price)
+
+            <div class="edit-item-old-images">
+                @foreach(var image in Model.Images) {
+                    <div class="thumbnail">
+                        <img src="data:image/png;base64,  @Convert.ToBase64String(image)">
+                    </div>
+                }
+            </div>
+            <div id="mulitplefileuploader">Upload</div>
+            <div id="status"></div>
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    }
+</body>
