@@ -14,7 +14,7 @@ namespace AppHarborMongoDBDemo {
 
 
         public static List<Thingy> Things(string id = "") {
-            var db = new MongoClient(BaseController.GetMongoDbConnectionString()).GetDatabase("appharbor_pw3dvl7m");
+            var db = new MongoClient(BaseController.MongoDbConnectionString).GetDatabase(BaseController.MongoDbDatabaseName);
             // db.GetCollection<Thingy>("Thingies").DeleteMany(x=>x.Name!="");
             if(string.IsNullOrEmpty(id))
                 return db.GetCollection<Thingy>("Thingies").Find(x => x.Name != null && x.Name != "").ToList();

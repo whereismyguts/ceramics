@@ -7,6 +7,7 @@ namespace AppHarborMongoDBDemo
 	{
 		public string Name { get; set; }
         public string Description { get; set; }
+        public string Tags { get; set; } = string.Empty;
         public float Price { get; set; }
         public List<byte[]> Images { get; internal set; }
     }
