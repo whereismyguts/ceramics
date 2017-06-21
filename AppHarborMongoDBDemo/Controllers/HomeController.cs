@@ -7,6 +7,9 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Web;
 using System;
+using System.Text;
+using System.IO;
+using System.Web.UI;
 
 namespace AppHarborMongoDBDemo {
     public class HomeController: BaseController {
@@ -60,22 +63,68 @@ namespace AppHarborMongoDBDemo {
             return View(images);
         }
 
+
+
+        [HttpPost]
+        public ActionResult GetCartItems() {
+            var userId = Request.Cookies["cart"].Value;
+            if(string.IsNullOrEmpty(userId))
+                return Json("");
+
+            var cartsCollection = Database.GetCollection<UserCart>("Carts");
+            var cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
+            if(cart == null) {
+                return Json("");
+            }
+
+
+            CartItems results = new CartItems();
+            foreach(var itemId in cart.Items) {
+                ObjectId obj = new MongoDB.Bson.ObjectId(itemId);
+                //   var results = _collection.Find(x => x.Name != "").ToList();
+                Thingy thing = _collection.Find(x => x.Id == obj).FirstOrDefault();
+
+                results.Add(thing);
+            }
+            if(results.Items.Count > 0)
+                return PartialView("_CartItemsList", results);
+            return Json("");
+        }
+
+        [HttpPost]
+        public ActionResult CountCartItem(string itemId, int delta) {
+            var userId = Request.Cookies["cart"].Value;
+            IMongoCollection<UserCart> cartsCollection = Database.GetCollection<UserCart>("Carts");
+            UserCart cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
+            if(delta > 0)
+                cart.Items.Add(itemId);
+            else
+                cart.Items.Remove(itemId);
+            cartsCollection.ReplaceOne(x => x.Id == cart.Id, cart);
+            return Json(itemId + " " + delta);
+        }
+
+        [HttpPost]
+        public ActionResult RemoveCartItem(string itemId) {
+            var userId = Request.Cookies["cart"].Value;
+            IMongoCollection<UserCart> cartsCollection = Database.GetCollection<UserCart>("Carts");
+            UserCart cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
+            cart.Items.RemoveAll(i => i == itemId);
+            cartsCollection.ReplaceOne(x => x.Id == cart.Id, cart);
+            return Json(itemId + " removed from cart");
+        }
         [HttpPost]
         public ActionResult AddToCart(string itemId) {
             var objId = new ObjectId(itemId);
-            if(string.IsNullOrEmpty(Response.Cookies.Get("cart").Value)) {
+            if(string.IsNullOrEmpty(Request.Cookies["cart"].Value)) {
                 var cookie = new HttpCookie("cart", GetNewClientId());
                 cookie.Expires = System.DateTime.Now.AddMonths(1);
                 Response.Cookies.Set(cookie);
 
             }
-            var userId = Response.Cookies.Get("cart").Value;
-
-
-
-            var cartsCollection = Database.GetCollection<UserCart>("Carts");
-
-            var cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
+            string userId = Request.Cookies["cart"].Value;
+            IMongoCollection<UserCart> cartsCollection = Database.GetCollection<UserCart>("Carts");
+            UserCart cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
             if(cart == null) {
                 cart = new UserCart(userId, itemId);
                 cartsCollection.InsertOne(cart);
@@ -84,7 +133,7 @@ namespace AppHarborMongoDBDemo {
                 cart.Items.Add(itemId);
                 cartsCollection.ReplaceOne(x => x.Id == cart.Id, cart);
             }
-            
+
             return Json(cart.Items);
         }
         Random r = new Random();

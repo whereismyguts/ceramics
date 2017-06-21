@@ -34,7 +34,7 @@
                 url: "/Home/AddToCart",
                 data: { itemId: id },
             success: function (res) {
-                
+                refreshCart();
             },
             datatype: "json",
             traditional: true

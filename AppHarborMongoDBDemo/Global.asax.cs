@@ -28,6 +28,11 @@ namespace AppHarborMongoDBDemo
           url: "Work/{id}",
           defaults: new { controller = "Home", action = "Work" }
       );
+            routes.MapRoute(
+    name: "Remove",
+    url: "Remove/{id}",
+    defaults: new { controller = "Manage", action = "Remove" }
+);
 
             routes.MapRoute(
 				"Default", // Route name

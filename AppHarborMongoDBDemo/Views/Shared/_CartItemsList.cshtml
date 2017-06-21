@@ -1,0 +1,35 @@
+﻿@model CartItems
+
+@*<i class="hide-button material-icons">keyboard_arrow_right</i>*@
+<h1> Список покупок
+    
+    </h1>
+
+<table cellspacing="0">
+
+    @foreach(var item in Model.Items) {
+        <tr>
+            <td style="width:100px">
+                <a href="/item/@item.Thing.Id"> @item.Thing.Name  </a> 
+                </td>
+            <td>@item.Thing.Price ₽</td>
+            
+            <td> @item.Price ₽</td>
+            
+            <td>
+                <i style="color:indianred" class="material-icons" onclick="countCardItem('@item.Thing.Id', -1)">remove_circle</i>
+            </td>
+            <td> @item.Count шт.</td>
+            <td><i style="color:darkseagreen" class="material-icons"  onclick="countCardItem('@item.Thing.Id', 1)">add_circle</i></td>
+                
+            <td>
+                <i style="color:indianred" onclick="removeCardItem('@item.Thing.Id')" class="material-icons" >clear</i>
+            </td>    
+                
+        </tr>
+    }
+</table>
+
+<p>Всего: @Model.Price ₽ 
+    <div id="buy-item" onclick="" class="button" @*href="/buy/@Model.Id"*@>Оформить заказ</div>
+     </p>

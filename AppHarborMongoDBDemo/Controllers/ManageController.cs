@@ -56,7 +56,7 @@ namespace AppHarborMongoDBDemo {
 
 
         public ActionResult Index() {
-
+            ImagesToAdd.Clear();
             //var collection = Database.GetCollection<Thingy>("Thingies");
             //var results = collection.Find(x => x.Name != "").ToList();
             return View("new");
@@ -74,7 +74,7 @@ namespace AppHarborMongoDBDemo {
 
             _collection.InsertOne(thingy);
 
-
+            ImagesToAdd.Clear();
             return RedirectToAction("index", "manage");
         }
 
@@ -88,6 +88,8 @@ namespace AppHarborMongoDBDemo {
             }
             newThingy.Id = objId;
             _collection.ReplaceOne(x => x.Id == newThingy.Id, newThingy);
+
+            ImagesToAdd.Clear();
 
             return RedirectToAction("index", "manage");
         }
