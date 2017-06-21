@@ -27,12 +27,23 @@
 
     @RenderBody()
 
-   
+   <div class="footer">
+       <p>SorokinSad.com - 2017. Made by <a href="mylink">A. Karmanov</a></p>
+
+   </div>
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.image-container').slick();
+        });
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+                $('.footer').css("opacity", 1);
+            } else {
+                $('.footer').css("opacity", 0);
+            }
         });
     </script>
 </body>

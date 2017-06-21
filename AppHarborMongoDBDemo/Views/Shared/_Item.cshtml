@@ -22,11 +22,23 @@
     </div>
     @{
         string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
-        if(controllerName.ToLower() == "manage") {
-            <a class="button" href="/manage/remove/@Model.Id" onclick="return confirm('ТОЧНО?')" title="Тут в магазине будет кнопка Купить">Удалить</a>
-        }
-        else {
-            <a class="button" href="/buy/@Model.Id">Купить</a>
-        }
+
+        <div id="buy-item" onclick="buyItem('@Model.Id')" class="button" @*href="/buy/@Model.Id"*@>Купить</div>
+
     }
+
+    <script>
+        function buyItem(id){
+            $.ajax({
+                type: "POST",
+                url: "/Home/AddToCart",
+                data: { itemId: id },
+            success: function (res) {
+                
+            },
+            datatype: "json",
+            traditional: true
+        });
+        }
+    </script>
 </div>

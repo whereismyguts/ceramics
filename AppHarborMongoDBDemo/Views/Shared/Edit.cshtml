@@ -30,8 +30,11 @@
             <div id="mulitplefileuploader">Upload</div>
             <div id="status"></div>
         </p>
-        <p>
-            <input type="submit" value="Submit" />
+        <p >
+            <input class="button"  style="display:inline" type="submit" value="Ok" />
+             <a  class="button"  style="display:inline" href="/manage/remove/@Model.Id" onclick="return confirm('ТОЧНО?')">Удалить</a>
         </p>
+
+
     }
 </body>

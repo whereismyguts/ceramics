@@ -24,6 +24,12 @@ namespace AppHarborMongoDBDemo
              defaults: new { controller = "Manage", action = "Edit" }
          );
             routes.MapRoute(
+          name: "Work",
+          url: "Work/{id}",
+          defaults: new { controller = "Home", action = "Work" }
+      );
+
+            routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
