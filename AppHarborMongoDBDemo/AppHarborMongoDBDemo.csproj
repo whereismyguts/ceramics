@@ -125,7 +125,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CartItem.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\UserCart.cs" />
@@ -182,10 +183,13 @@
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Work.cshtml" />
+    <Content Include="Views\Home\Insta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_CartItemsList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Work.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

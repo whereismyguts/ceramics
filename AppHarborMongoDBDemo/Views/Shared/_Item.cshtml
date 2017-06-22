@@ -31,10 +31,10 @@
         function buyItem(id){
             $.ajax({
                 type: "POST",
-                url: "/Home/AddToCart",
+                url: "/Cart/AddToCart",
                 data: { itemId: id },
             success: function (res) {
-                refreshCart();
+                refreshCart(true, true);
             },
             datatype: "json",
             traditional: true

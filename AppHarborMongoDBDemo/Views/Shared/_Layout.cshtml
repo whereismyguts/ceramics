@@ -10,16 +10,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
-    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
     @{
         ViewBag.Title = "Авторская керамика|Сорокин сад";
     }
 </head>
 
 <body>
-
-
-
     <div class="header-menu">
         <a href="/work" class="header-menu-item"><span> Процесс </span></a>
         <a href="/" class="logo"> </a>
@@ -33,8 +29,6 @@
 
     @RenderBody()
 
-
-
     <div class="footer">
         <p>SorokinSad.com - 2017. Made by <a href="mylink">A. Karmanov</a></p>
 
@@ -44,63 +38,76 @@
     <script>
         $(document).ready(function () {
             $('.image-container').slick();
-            refreshCart();
+            refreshCart(false, false);
         });
-
-        countCardItem
         function countCardItem(id, count) {
             $.ajax({
                 type: "POST",
-                url: "/Home/CountCartItem",
-                data: { itemId: id, delta:count },
+                url: "/Cart/CountCartItem",
+                data: { itemId: id, delta: count },
                 success: function (res) {
-                    refreshCart();
+                    refreshCart(true, false);
                 },
                 datatype: "json",
                 traditional: true
             });
         }
-
         function removeCardItem(id) {
             $.ajax({
                 type: "POST",
-                url: "/Home/RemoveCartItem",
-                data: {itemId: id},
+                url: "/Cart/RemoveCartItem",
+                data: { itemId: id },
                 success: function (res) {
-                    refreshCart();
+                    refreshCart(false, true);
                 },
                 datatype: "json",
                 traditional: true
             });
         }
-
-        function refreshCart() {
+        function refreshCart(shouldShowCart,shouldAnimate) {
             $.ajax({
                 type: "POST",
-                url: "/Home/GetCartItems",
+                url: "/Cart/GetCartItems",
                 success: function (res) {
-                    
                     if (res) {
                         $('.cart-sidebar').empty();
                         $('.cart-sidebar').append(res);
-                        $('.cart-sidebar').css("animation", "0.5s rollin");
-                        $('.cart-sidebar').css("right", "0px");
-                        //res.forEach(function (item, i, res) {
-                        //    $('.cart-sidebar').append('<p>'+item+'</p>');
-
-                        //});
+                        if (shouldShowCart) {
+                            if (shouldAnimate)
+                                showCart();
+                            else
+                                showCartImediately();
+                        }
+                        else {
+                            if (shouldAnimate)
+                                hideCart();
+                            else
+                                hideCartImediately();
+                        }
                     }
-                    else {
-                        $('.cart-sidebar').css("animation", "0.5s rollout");
-                        $('.cart-sidebar').css("right", "-360px");
-                    }
-                    
                 },
                 datatype: "json",
                 traditional: true
             });
         }
-
+        function showCartImediately() {
+            $('.cart-sidebar').css("right", "0px");
+            $('#hide-cart').css("visibility", "visible");
+            $('#show-cart').css("visibility", "hidden");
+        }
+        function hideCartImediately() {
+            $('.cart-sidebar').css("right", "-370px");
+            $('#hide-cart').css("visibility", "hidden");
+            $('#show-cart').css("visibility", "visible");
+        }
+        function showCart() {
+            $('.cart-sidebar').css("animation", "0.3s rollin");
+            showCartImediately();
+        }
+        function hideCart() {
+            $('.cart-sidebar').css("animation", "0.3s rollout");
+            hideCartImediately();
+        }
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() == $(document).height()) {
                 $('.footer').css("opacity", 1);
