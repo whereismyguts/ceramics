@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.Web;
 using System;
 using System.Text;
-using System.IO;
-using System.Web.UI;
 
 namespace AppHarborMongoDBDemo {
     public class HomeController: BaseController {

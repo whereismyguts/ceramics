@@ -40,7 +40,7 @@ namespace AppHarborMongoDBDemo {
                 if(fileData != null) {
                     ImagesToAdd.Add(fileData);
 
-                    return Json(WebDataProvider.GetBase64(fileData));
+                    return Json(ImageHelper.ByteToBase64(fileData));
 
                     //if(fileData.LongLength > 32000)
                     //    return Json(WebDataProvider.Resize2Max50Kbytes(fileData));
