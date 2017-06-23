@@ -32,31 +32,12 @@ namespace AppHarborMongoDBDemo {
             return RedirectToAction("Index");
         }
 
-        public ActionResult Work(string id="") {
+        public ActionResult Work( ) {
+              return View();
+        }
+        public ActionResult Contact() {
             return View();
-            List<string> images = new List<string>();
 
-            using(WebClient wc = new WebClient()) {
-                try {
-                    string json = wc.DownloadString("https://www.instagram.com/" + id + "/media/");
-                    JObject obj = (JObject)JsonConvert.DeserializeObject(json);
-
-                    foreach(var value in obj.First.Values()) {
-                        var imageObject = value.Value<JObject>("images").Value<JObject>("standart_resolution");
-
-                        if(imageObject == null)
-                            imageObject = value.Value<JObject>("images").Value<JObject>("low_resolution");
-
-                        string imageUrl = imageObject.Value<string>("url");
-
-                        images.Add(imageUrl);
-                    }
-                }
-                catch {
-                    return View("insta",new string[] { });
-                }
-            }
-            return View("insta",images);
         }
     }
 }

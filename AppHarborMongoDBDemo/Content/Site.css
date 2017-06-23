@@ -9,11 +9,26 @@
     -webkit-font-smoothing: antialiased !important;
 }
 
+ @font-face {
+    font-family: Roboto; 
+    src: url(Roboto-Light.ttf);
+   }
+ @font-face {
+    font-family: RobotoThin; 
+    src: url(Roboto-Thin.ttf); 
+   }
+ 
+
 header,
 footer,
 nav,
 section {
     display: block;
+}
+
+h1, .header-menu, .cart-sidebar a {
+    font-family: RobotoThin !important;
+        text-align: start;
 }
 
 .footer {
@@ -152,12 +167,18 @@ textarea {
 }
 
 .tiles-container {
-    display: -webkit-flex;
+    margin: auto; 
+    
     display: flex;
-    -webkit-flex-wrap: wrap;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-wrap: wrap;
-    margin: auto;
+    -webkit-flex-wrap: wrap;
+    
     justify-content: center;
+    -ms-flex-pack: center;
+
 }
 
 .tile-item * {
@@ -227,9 +248,9 @@ textarea {
 
 .header-menu-item:hover {
     transition: 0.2s ease-out;
-    box-shadow: 0px 0px 7px 2px #ccc;
+    box-shadow: 0px 0px 7px 2px #ddd;
     /*text-shadow: 0 0 3px #333;*/
-    background: #ccc;
+    background: #ddd;
 }
 
 .header-menu-item {
@@ -338,7 +359,7 @@ input, textarea {
 }
 
 .image-container {
-    height: 440px;
+    /*height: 440px;*/
     width: 100%;
     margin-bottom: 20px;
 }
@@ -348,14 +369,81 @@ input, textarea {
         width: 100%;
     }
 
-        .image-container div img {
-            /* max-height:100%; */
-            /* min-height: 100%; */
+
+
+
+
+      
+    /*form big screen*/
+@media screen and (min-width: 480px) {
+     .image-container div img {
             border-radius: 5px;
-            /* width:100%; */
             height: 100%;
             margin: auto;
         }
+
+      #show-cart {
+    position:absolute;
+    width: 35px;
+    border-radius: 5px;
+    background-color: #eee;
+    left: -40px;
+}
+      #hide-cart {
+    left: -34px;
+    top: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: rgba(238, 238, 238, 0.8);
+}
+      .cart-sidebar {
+    user-select: none;
+    animation-timing-function: ease-in;
+    /*animation: 0.5s rollin;*/
+    position: fixed;
+    top: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    /*right:0;*/
+    background-color: rgba(238, 238, 238, 0.95);
+    width: 350px;
+    z-index: 1;
+    right: -370px;
+    max-width: 80%;
+}
+      
+}
+/*form small screen*/
+@media screen and (max-width: 480px) {
+    #hide-cart {
+        top:0;
+    }
+      #show-cart {
+    /*background-color: #eee;*/
+    position:fixed !important;
+    top:0;
+    right:0;
+    width:30px;
+}
+    .cart-sidebar {
+        user-select: none;
+    animation-timing-function: ease-in;
+    position: fixed;
+    top: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    /* right: 0; */
+    background-color: rgba(238, 238, 238, 1);
+    z-index: 1;
+    width: 95%;
+    margin: 0;
+    padding-top:20px;
+    box-sizing: border-box;
+    font-size: 80%;
+    }
+     
+}
+
 
 .slick-prev {
     left: -25px;
@@ -525,39 +613,16 @@ td {
     width: 100%;
 }
 
-.cart-sidebar {
-    user-select: none;
-    animation-timing-function: ease-in;
-    /*animation: 0.5s rollin;*/
-    position: fixed;
-    top: 40px;
-    padding: 10px;
-    border-radius: 3px;
-    /*right:0;*/
-    background-color: rgba(238, 238, 238, 0.95);
-    width: 350px;
-    z-index: 1;
-    right: -370px;
-}
+
 
 .material-icons {
     cursor: pointer;
 }
 
-#show-cart {
-    width: 35px;
-    border-radius: 5px;
-    background-color: #eee;
-    left: -40px;
-}
 
-#hide-cart {
-    left: -34px;
-    top: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    background-color: rgba(238, 238, 238, 0.8);
-}
+
+
+
 
 #show-cart, #hide-cart {
     position: absolute;
@@ -566,6 +631,8 @@ td {
 }
 
 .cart-item-count {
+    left:-6px;
+    bottom:-10px;
     position: absolute;
     width: 17px;
     height: 17px;
@@ -576,8 +643,41 @@ td {
     text-align: center;
     background: #40b964;
     font-family: Cambria;
+    border: 3px solid #fff;
+    /*padding-right:1px;*/
 }
 
 #buy-item {
     text-align: center;
 }
+
+.process, .contact {
+    display:block;
+    margin:auto;
+    width:70%;
+    min-width:300px;
+    background-color:#eee;
+    padding: 10px 10px;
+    margin-top:50px;
+    line-height: 20px;
+        word-wrap: break-word;
+        text-align:justify;
+
+        padding-bottom:50px;
+}
+
+    .process img {
+        clear: both;
+        width: 100%;
+        /*max-height: 300px;*/
+        margin: 15px 0;
+    }
+    .contact input {
+        margin-top:10px;
+    }
+
+    .contact textarea {
+        width:95%;
+        
+    }
+

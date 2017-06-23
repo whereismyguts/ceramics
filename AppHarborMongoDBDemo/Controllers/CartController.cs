@@ -33,6 +33,7 @@ namespace AppHarborMongoDBDemo.Controllers {
                     ObjectId obj = new MongoDB.Bson.ObjectId(itemId);
                     //   var results = _collection.Find(x => x.Name != "").ToList();
                     Thingy thing = _collection.Find(x => x.Id == obj).FirstOrDefault();
+                    if(thing!=null)
                     results.Add(thing);
                 }
             }

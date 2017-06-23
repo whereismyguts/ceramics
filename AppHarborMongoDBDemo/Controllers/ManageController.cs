@@ -1,10 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -115,6 +118,51 @@ namespace AppHarborMongoDBDemo {
 
         public ManageController() {
             _collection = Database.GetCollection<Thingy>("Thingies");
+        }
+
+        public ActionResult Instagram() {
+            string id = "sorokin_sad";
+
+            List<Thingy> things = new List<Thingy>();
+
+            using(WebClient wc = new WebClient()) {
+                try {
+                    string json = wc.DownloadString("https://www.instagram.com/" + id + "/media/");
+                    JObject obj = (JObject)JsonConvert.DeserializeObject(json);
+                    int i = 1;
+                    foreach(var value in obj.First.Values()) {
+                        var imageObject = value.Value<JObject>("images").Value<JObject>("standart_resolution");
+
+                        if(imageObject == null)
+                            imageObject = value.Value<JObject>("images").Value<JObject>("low_resolution");
+
+                        string imageUrl = imageObject.Value<string>("url");
+
+                        var caption = value.Value<JObject>("caption");
+
+                        string description = caption == null ? "" : caption.GetValue("text").ToString();
+
+                        var array = ImageHelper.GetImage(imageUrl);
+
+                        Thingy thing = new Thingy() {
+                            Images = new List<byte[]> { array, array, array },
+                            Name = "Из инсты #" + i,
+                            Description = description,
+                            Price = new Random().Next(1, 15) * 100
+                        };
+                        things.Add(thing);
+                        //images.Add(imageUrl);
+                        i++;
+                    }
+                }
+                catch(Exception e) {
+                  return   RedirectToAction("index", "manage");
+                }
+            }
+            _collection.DeleteManyAsync(i => true);
+            _collection.InsertMany(things);
+            // return View("insta",images);
+            return RedirectToAction("index", "manage");
         }
     }
 }

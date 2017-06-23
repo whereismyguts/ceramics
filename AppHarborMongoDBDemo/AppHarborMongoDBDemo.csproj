@@ -192,6 +192,13 @@
   <ItemGroup>
     <Content Include="Views\Home\Work.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Roboto-Light.ttf" />
+    <Content Include="Content\Roboto-Thin.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Contact.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

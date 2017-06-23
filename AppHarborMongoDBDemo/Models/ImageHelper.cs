@@ -46,7 +46,7 @@ namespace AppHarborMongoDBDemo {
             return _sb.ToString();
         }
 
-        static byte[] GetImage(string url) {
+        public static byte[] GetImage(string url) {
             Stream stream = null;
             byte[] buf;
 
