@@ -67,7 +67,8 @@ namespace AppHarborMongoDBDemo.Controllers {
         [HttpPost]
         public ActionResult AddToCart(string itemId) {
             var objId = new ObjectId(itemId);
-            if(Request.Cookies["cart"].Value == null || Request.Cookies["cart"].Value == "") {
+            var c = Request.Cookies.Get("cart");
+            if(c==null ||  Request.Cookies["cart"].Value == null || Request.Cookies["cart"].Value == "") {
                 var cookie = new HttpCookie("cart", GetNewClientId());
                 cookie.Expires = System.DateTime.Now.AddMonths(1);
                 Response.Cookies.Set(cookie);
