@@ -435,11 +435,11 @@ input, textarea {
     /* right: 0; */
     background-color: rgba(238, 238, 238, 1);
     z-index: 1;
-    width: 95%;
+        width: 78%;
     margin: 0;
     padding-top:20px;
     box-sizing: border-box;
-    font-size: 80%;
+    font-size: 60%;
     }
      
 }
@@ -486,26 +486,31 @@ input, textarea {
 }
 
 .button {
-    background: #99CCCC;
-    /*background-image: -webkit-linear-gradient(top, #34d9aa, #99CCCC);
-  background-image: -moz-linear-gradient(top, #34d9aa, #99CCCC);
-  background-image: -ms-linear-gradient(top, #34d9aa, #99CCCC);
-  background-image: -o-linear-gradient(top, #34d9aa, #99CCCC);
-  background-image: linear-gradient(to bottom, #34d9aa, #99CCCC);*/
-    -webkit-border-radius: 26;
-    -moz-border-radius: 26;
-    border-radius: 26px;
-    /*text-shadow: 0px 0px 4px #000000;*/
-    /*-webkit-box-shadow: 0px 1px 3px #666666;
-  -moz-box-shadow: 0px 1px 3px #666666;
-  box-shadow: 0px 1px 3px #666666;*/
-    color: #ffffff;
-    font-size: 16px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    border: none;
-    outline: none;
+/*height: 26px;*/
+    border: 0;
+    margin: 0;
+    padding: 10px 12px ;
+    background: #488792;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#569ea7), to(#3a707d));
+    background: -webkit-linear-gradient(270deg, #569ea7, #3a707d 100%);
+    background: -moz-linear-gradient(270deg,#569ea7, #3a707d 100%);
+    background: -ms-linear-gradient(270deg,#569ea7, #3a707d 100%);
+    background: -o-linear-gradient(270deg,#569ea7, #3a707d 100%);
+    background: linear-gradient(180deg,#569ea7, #3a707d 100%);
+    color: #fff;
     cursor: pointer;
+    font-family: Helvetica, Arial, "Liberation Sans", "Bitstream Vera Sans", sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: -1px -1px rgba(0, 0, 0, .3);
+    text-transform: uppercase;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
 }
 
     .button:hover {

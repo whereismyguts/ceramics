@@ -4,56 +4,56 @@
 
 <i id="hide-cart" class="material-icons">keyboard_arrow_right</i>
 @if(Model.Count > 0) {
-<div id="show-cart">
-    <i class="material-icons">shopping_cart</i>
+    <div id="show-cart">
+        <i class="material-icons">shopping_cart</i>
 
-    <div class="cart-item-count">@Model.Count</div>
+        <div class="cart-item-count">@Model.Count</div>
 
-</div>
+    </div>
 }
 
 @if(Model.Count > 0) {
-        <table cellspacing="0">
-            <thead>
-                <tr>
-                    <td></td>
-                    <td>Цена за шт.</td>
-                    <td>Всего</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </thead>
-            @foreach(var item in Model.Items) {
-                <tr>
-                    <td style="width:100px">
-                        <a href="/item/@item.Thing.Id"> @item.Thing.Name  </a>
-                    </td>
-                    <td>@item.Thing.Price ₽</td>
-                    <td> @item.Price ₽</td>
-                    <td>
-                        <i style="color:indianred" class="material-icons" onclick="countCardItem('@item.Thing.Id', -1)">remove_circle</i>
-                    </td>
-                    <td> @item.Count шт.</td>
-                    <td><i style="color:darkseagreen" class="material-icons" onclick="countCardItem('@item.Thing.Id', 1)">add_circle</i></td>
-                    <td>
-                        <i style="color:indianred" onclick="removeCardItem('@item.Thing.Id')" class="material-icons">clear</i>
-                    </td>
-                </tr>
-            }
-        </table>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <td></td>
+                <td>Цена за шт.</td>
+                <td>Всего</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach(var item in Model.Items) {
+            <tr>
+                <td style="width:100px">
+                    <a href="/item/@item.Thing.Id"> @item.Thing.Name  </a>
+                </td>
+                <td>@item.Thing.Price ₽</td>
+                <td> @item.Price ₽</td>
+                <td>
+                    <i style="color:indianred" class="material-icons" onclick="countCardItem('@item.Thing.Id', -1)">remove_circle</i>
+                </td>
+                <td> @item.Count шт.</td>
+                <td><i style="color:darkseagreen" class="material-icons" onclick="countCardItem('@item.Thing.Id', 1)">add_circle</i></td>
+                <td>
+                    <i style="color:indianred" onclick="removeCardItem('@item.Thing.Id')" class="material-icons">clear</i>
+                </td>
+            </tr>
+        }
+    </table>
         <p>
             Всего: @Model.Price ₽
-            <div id="buy-item" onclick="" class="button">Оформить заказ</div>
+            <div id="buy-item" onclick="window.location.href='/order'" class="button">Оформить заказ</div>
         </p>
 }
 else {
-    <p >Корзина пуста.</p>
+    <p>Корзина пуста.</p>
 }
 <script>
     //$('empty-cart').ready(hideCart);
-    $('#hide-cart').click(function(){
+    $('#hide-cart').click(function () {
         hideCart();
     });
     $('#show-cart').click(function () {

@@ -26,6 +26,12 @@ namespace AppHarborMongoDBDemo {
       );
 
             routes.MapRoute(
+name: "Order",
+url: "Order",
+defaults: new { controller = "Home", action = "Order" }
+);
+
+            routes.MapRoute(
         name: "Contact",
         url: "Contact",
         defaults: new { controller = "Home", action = "Contact" }

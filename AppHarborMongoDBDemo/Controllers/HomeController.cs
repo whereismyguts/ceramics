@@ -37,7 +37,9 @@ namespace AppHarborMongoDBDemo {
         }
         public ActionResult Contact() {
             return View();
-
+        }
+        public ActionResult Order() {
+            return View();
         }
     }
 }
