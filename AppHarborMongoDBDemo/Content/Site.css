@@ -284,6 +284,8 @@ textarea {
     background-repeat: no-repeat;
     background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/739443-200.png);
     /*outline:1px solid #3a707d;*/
+
+     
 }
 .header-menu-item {
     /*outline:1px solid #3a707d;*/
@@ -292,13 +294,20 @@ textarea {
     line-height:30px;
     text-align: center;
     outline: none;
+    border-radius:5px;
 }
 
-.header-menu-item:hover {
+.header-menu-item:hover  {
     transition: 0.2s ease-out;
-    box-shadow: 0px 0px 7px 2px #ddd;
+    box-shadow: 0px 0px 10px 3px #eee;
     /*text-shadow: 0 0 3px #333;*/
-    background: #ddd;
+    background: #eee;
+    height:25px;
+    
+}
+.header-menu-item span {
+    line-height: 21px;
+    font-size: 15px;
 }
 
 .social-links a:hover {
@@ -312,8 +321,8 @@ textarea {
     cursor:pointer;
 }
 .social-links {
+    z-index:1;
     position:absolute;
-    z-index:2;
     top:7px;
     left:3px;
     width:45px;
@@ -326,10 +335,7 @@ a {
     text-decoration: none;
 }
 
-.header-menu-item span {
-    line-height: 21px;
-    font-size: 15px;
-}
+
 
 img {
     /*opacity: 0.1;*/
@@ -430,7 +436,11 @@ input, textarea {
 
 
 
-      
+@media screen and (max-width:380px) {
+    .cart-sidebar {
+        width: 100% !important;
+    }
+}
     /*form big screen*/
 @media screen and (min-width: 480px) {
      .image-container div img {

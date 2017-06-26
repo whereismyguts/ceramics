@@ -140,14 +140,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Magpie.png" />
     <Content Include="Scripts\jquery-latest.min.js" />
     <Content Include="Scripts\jquery.uploadfile.min.js" />
-    <Content Include="Content\slick.css" />
+    <Content Include="Content\slick.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\manage.js" />
     <Content Include="Scripts\slick.min.js" />
-    <Content Include="Content\uploadfile.css" />
+    <Content Include="Content\uploadfile.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\sad.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -198,8 +205,12 @@
     <Content Include="Views\Home\Work.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Roboto-Light.ttf" />
-    <Content Include="Content\Roboto-Thin.ttf" />
+    <Content Include="Content\Roboto-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Roboto-Thin.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Contact.cshtml" />
@@ -208,7 +219,9 @@
     <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\material-icons.woff2" />
+    <Content Include="Content\material-icons.woff2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

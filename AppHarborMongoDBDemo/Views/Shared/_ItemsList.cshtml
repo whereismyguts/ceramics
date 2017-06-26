@@ -5,51 +5,9 @@
         @foreach(var thing in Model) {
             <a href="/item/@thing.Id" class="tile-item">
                 @if(thing.Images != null) {
-                    <img src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
+                    <img alt="@thing.Name" src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
                 }
                 <div class="tile-item-title">@thing.Name</div>
             </a>
         }
-
-        @*@for(int i = 0; i < 30; i++) {
-                <a href="/item/59428ffbfaf07933104a0a0b" class="tile-item">
-                    <img src="https://static1.squarespace.com/static/52e80969e4b002fc8996b8f1/54f4b27be4b0724ec210a327/57b61f0dd482e9d6d891f991/1471553414968/20160817_122011.jpg" />
-                    <div class="tile-item-title">Левак для тестирования  </div>
-                </a>
-            }*@
     </div>
-
-
-
-    @*@model Thingy
-        @{
-            Layout = null;
-        }
-        <div class="item-content">
-            <h1>@Model.Name</h1>
-
-            @if(Model.Images != null) {
-                <div class="image-container">
-                    @foreach(var image in Model.Images) {
-                        <div>
-                            <img src="data:image/png;base64,  @Convert.ToBase64String(image)">
-                        </div>
-                    }
-                </div>
-            }
-            <div class="item-description">
-                @Model.Description
-            </div>
-            <div class="item-price">
-                @Model.Price
-            </div>
-            @{
-                string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
-                if(controllerName.ToLower() == "manage") {
-                    <a class="button" href="manage/remove/@Model.Id" onclick="return confirm('ТОЧНО?')" title="Тут в магазине будет кнопка Купить">Удалить</a>
-                }
-                else {
-                    <a class="button" href="manage/buy/@Model.Id">Купить</a>
-                }
-            }
-        </div>*@
