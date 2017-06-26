@@ -59,28 +59,3 @@
         </p>
     }
 </div>
-
-
-
-<script>
-    function RemoveImage(id, elem) {
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("RemoveImage", "Manage")",
-            data: { id: id },
-            success: function (res) {
-                if (res === "removed") {
-                    elem.remove();
-                }
-            },
-            datatype: "json",
-            traditional: true
-        });
-    }
-    $(document).ready(function () {
-
-
-
-
-    });
-</script>

@@ -15,8 +15,6 @@
 
     <html>
     <head>
-        <meta name="viewport" content="width=device-width" />
-        <title></title>
     </head>
     <body>
 
@@ -45,53 +43,11 @@
             left: 70%;" href="/item/23213321">
             </a>*@
         </div>
-        @*<div class="tooltip" id="tooltip1">
-                Fucking amazing mug. You can fill it whatever you want.
-                <br />
-                <div class="buy">
-                    <div class="price">450₽</div> <a> Buy</a>
-                </div>
-            </div>
-
-            <div class="tooltip" id="tooltip2">
-                Holy mother fucking shit! You must to buy this thing!
-                <br />
-                <div class="buy">
-                    <div class="price">1050₽</div> <a> Buy</a>
-                </div>
-            </div>*@
-
+   
 
 
         @Html.Partial("~/Views/Shared/_ItemsList.cshtml", Model)
 
-        @*<script>
-                $('.area, .tooltip').mouseenter(
-                  function () {
-                      $(".tooltip").css('transition-delay', '0s');
-                      $(".tooltip").css('opacity', '0');
-
-                      var id = this.id.replace(/(tooltip)|(item)/, '');
-                      var pos = $('#item' + id).position();
-
-                      $("#tooltip" + id).css({
-                          top: pos.top + "px",
-                          left: pos.left + 150 + "px",
-                          opacity: 1
-                      }).show();
-                  })
-
-                $('.area, .tooltip').mouseleave(
-                  function () {
-                      var id = this.id.replace(/(tooltip)|(item)/, '');
-                      $("#tooltip" + id).css('transition-delay', '0s');
-                      $("#tooltip" + id).css('transition', '0s');
-                      $('#tooltip' + id).css('opacity', '0');
-                      $('#tooltip' + id).css('left', '-100px');
-                      $("#tooltip" + id).css('transition', '0.3s');
-                      $("#tooltip" + id).css('transition-delay', '0s');
-                  }
-                );
-            </script>*@
+       
 
         </body>

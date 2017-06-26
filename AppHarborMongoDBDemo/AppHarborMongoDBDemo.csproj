@@ -140,8 +140,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery-latest.min.js" />
+    <Content Include="Scripts\jquery.uploadfile.min.js" />
+    <Content Include="Content\slick.css" />
+    <Content Include="Scripts\manage.js" />
+    <Content Include="Scripts\slick.min.js" />
+    <Content Include="Content\uploadfile.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="Scripts\sad.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -165,9 +172,7 @@
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Views\Shared\_Item.cshtml" />
   </ItemGroup>
@@ -201,6 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Order.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\material-icons.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

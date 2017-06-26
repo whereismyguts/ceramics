@@ -17,15 +17,13 @@
     <div class="item-description">
         @Model.Description
     </div>
-    <div class="item-price">
-        @Model.Price
-    </div>
-    @{
-        string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
-
+  
+    <div class="buy-line">
+        <div class="item-price">
+            @Model.Price
+        </div>
         <div id="buy-item" onclick="buyItem('@Model.Id')" class="button" @*href="/buy/@Model.Id"*@>Купить</div>
-
-    }
+    </div>
 
     <script>
         function buyItem(id){
