@@ -1,4 +1,4 @@
-﻿body {
+﻿body,textarea, input {
     font-size: .85em;
     font-family: 'Roboto', sans-serif;
     /*font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;*/

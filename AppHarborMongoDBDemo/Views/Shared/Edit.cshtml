@@ -4,7 +4,7 @@
     ViewBag.Title += "Edit";
 }
 
-<body style="padding-left:20px;">
+<div style="padding-left:20px;">
     <h1>Редактирование штуки</h1>
     @using(Html.BeginForm("Update", "Manage", new { id = Model.Id }, FormMethod.Post, null)) {
         <p >@Html.TextBoxFor(x => x.Id)</p>
@@ -35,4 +35,4 @@
 
 
     }
-</body>
+</div>
