@@ -18,7 +18,7 @@
     src: url(Roboto-Thin.ttf); 
    }
  /* fallback */
-@font-face {
+/*@font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
@@ -39,7 +39,7 @@
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-}
+}*/
  
 
 header,
@@ -282,7 +282,7 @@ textarea {
     background-position: center;
     background-size: 50px;
     background-repeat: no-repeat;
-    background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/739443-200.png);
+    background-image: url(logo.png);
     /*outline:1px solid #3a707d;*/
 
      
