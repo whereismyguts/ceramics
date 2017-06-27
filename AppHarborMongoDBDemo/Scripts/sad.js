@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     $('.image-container').slick();
+    $('.main-image').slick({ arrows: false, dots: true, autoplay: true });
     refreshCart(false, false);
 });
 function countCardItem(id, count) {
@@ -77,3 +78,16 @@ $(window).scroll(function () {
         $('.footer').css("opacity", 0);
     }
 });
+
+function buyItem(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Cart/AddToCart",
+        data: { itemId: id },
+        success: function (res) {
+            refreshCart(true, true);
+        },
+        datatype: "json",
+        traditional: true
+    });
+}

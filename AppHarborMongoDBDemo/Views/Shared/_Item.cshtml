@@ -24,19 +24,4 @@
         </div>
         <div id="buy-item" onclick="buyItem('@Model.Id')" class="button" @*href="/buy/@Model.Id"*@>Купить</div>
     </div>
-
-    <script>
-        function buyItem(id){
-            $.ajax({
-                type: "POST",
-                url: "/Cart/AddToCart",
-                data: { itemId: id },
-            success: function (res) {
-                refreshCart(true, true);
-            },
-            datatype: "json",
-            traditional: true
-        });
-        }
-    </script>
 </div>
