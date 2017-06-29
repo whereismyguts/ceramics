@@ -1,0 +1,32 @@
+﻿@model Account
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CMS user verification</title>
+</head>
+<body>
+    @using(Html.BeginForm("LogOn", "Account", new { returnUrl = Model }, FormMethod.Post, null)) {
+    <div style=
+        "margin: auto;
+        width: 200px;
+        margin-top:40px;
+        ">
+
+        @Html.LabelFor(x => x.Login)
+        @Html.TextBoxFor(x => x.Login)
+        @Html.LabelFor(x => x.Password)
+        @Html.TextBoxFor(x => x.Password, new { type = "password"})
+
+            
+        <button style="width:70px; float:right" type="submit">OK</button>
+    </div>
+    }
+</body>
+</html>

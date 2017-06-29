@@ -3,14 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>CMS - @ViewBag.Title</title>
     <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/slick.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/uploadfile.css" rel="stylesheet">
-
-    @{
-        ViewBag.Title = "Авторская керамика|Сорокин сад";
-    }
 </head>
 
 
@@ -22,7 +18,7 @@
         <a href="/manage/instagram" class="header-menu-item"><span> Update </span></a>
         @*<a href="/work" class="header-menu-item"><span> Связаться </span></a>*@
     </div>
-
+    <p style="margin-top:35px; margin-left:20px;">Добро пожаловать, @(HttpContext.Current.User.Identity.Name). </p>
     @RenderBody()
 
 

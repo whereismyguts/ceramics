@@ -17,13 +17,13 @@ namespace AppHarborMongoDBDemo {
         static List<string> ImagesToRemove = new List<string>();
         private readonly IMongoCollection<Thingy> _collection;
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult RemoveImage(int id) {
             ImagesToRemove.Add(id.ToString());
             return Json("removed");
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult RememberImages(List<string> values) {
             ImagesToAdd = new List<byte[]>();
             if(values == null)
@@ -36,7 +36,7 @@ namespace AppHarborMongoDBDemo {
             return Json(true);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult RememberImage() {
             using(var binaryReader = new BinaryReader(Request.Files[0].InputStream)) {
                 byte[] fileData = binaryReader.ReadBytes(Request.Files[0].ContentLength);
@@ -57,7 +57,7 @@ namespace AppHarborMongoDBDemo {
 
 
 
-
+        [Authorize]
         public ActionResult Index() {
             ImagesToAdd.Clear();
             //var collection = Database.GetCollection<Thingy>("Thingies");
@@ -70,7 +70,7 @@ namespace AppHarborMongoDBDemo {
         //}
 
 
-
+        [Authorize]
         public ActionResult Create(Thingy thingy) {
 
             thingy.Images = ImagesToAdd;
@@ -81,6 +81,7 @@ namespace AppHarborMongoDBDemo {
             return RedirectToAction("index", "manage");
         }
 
+        [Authorize]
         public ActionResult Update(string id, Thingy newThingy) {
             var objId = new ObjectId(id);
             if(ImagesToAdd.Count > 0)
@@ -96,7 +97,7 @@ namespace AppHarborMongoDBDemo {
 
             return RedirectToAction("index", "manage");
         }
-
+        [Authorize]
         public ActionResult Remove(string id) {
 
             var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
@@ -106,7 +107,7 @@ namespace AppHarborMongoDBDemo {
 
             return RedirectToAction("index", "manage");
         }
-
+        [Authorize]
         public ActionResult Edit(string id) {
             //   var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
             ImagesToAdd.Clear();
@@ -119,7 +120,7 @@ namespace AppHarborMongoDBDemo {
         public ManageController() {
             _collection = Database.GetCollection<Thingy>("Thingies");
         }
-
+        [Authorize]
         public ActionResult Instagram() {
             string id = "sorokin_sad";
 
@@ -156,7 +157,7 @@ namespace AppHarborMongoDBDemo {
                     }
                 }
                 catch(Exception e) {
-                  return   RedirectToAction("index", "manage");
+                    return RedirectToAction("index", "manage");
                 }
             }
             _collection.DeleteManyAsync(i => true);
