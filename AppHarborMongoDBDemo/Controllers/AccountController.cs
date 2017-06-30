@@ -9,7 +9,7 @@ namespace AppHarborMongoDBDemo {
     public class AccountController: BaseController {
 
         static string returnUrl;
-        public ActionResult LogOn(Account model) {
+        public ActionResult Login(Account model) {
 
             if(string.IsNullOrEmpty( returnUrl) && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
                 returnUrl = Request.QueryString["ReturnUrl"]; 

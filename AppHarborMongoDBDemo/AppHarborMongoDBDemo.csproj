@@ -182,7 +182,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Item.cshtml" />
