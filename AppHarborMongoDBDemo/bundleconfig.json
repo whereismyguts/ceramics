@@ -20,5 +20,13 @@
       "Scripts/sad.js",
       "Scripts/slick.min.js"
     ]
+  },
+  {
+    "outputFileName": "Content/bundle.css",
+    "inputFiles": [
+      "Content/site.css",
+      "Content/slick.css",
+      "Content/uploadfile.css"
+    ]
   }
 ]
