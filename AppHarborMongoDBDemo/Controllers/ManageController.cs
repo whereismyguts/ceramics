@@ -32,7 +32,6 @@ namespace AppHarborMongoDBDemo {
                 byte[] newBytes = Convert.FromBase64String(s.Split(',')[1]);
                 ImagesToAdd.Add(newBytes);
             }
-
             return Json(true);
         }
 
@@ -55,8 +54,6 @@ namespace AppHarborMongoDBDemo {
             }
         }
 
-
-
         [Authorize]
         public ActionResult Index() {
             ImagesToAdd.Clear();
@@ -65,18 +62,10 @@ namespace AppHarborMongoDBDemo {
             return View("new");
         }
 
-        //public ActionResult New() {
-        //    return View();
-        //}
-
-
         [Authorize]
         public ActionResult Create(Thingy thingy) {
-
             thingy.Images = ImagesToAdd;
-
             _collection.InsertOne(thingy);
-
             ImagesToAdd.Clear();
             return RedirectToAction("index", "manage");
         }
@@ -92,21 +81,20 @@ namespace AppHarborMongoDBDemo {
             }
             newThingy.Id = objId;
             _collection.ReplaceOne(x => x.Id == newThingy.Id, newThingy);
-
             ImagesToAdd.Clear();
 
             return RedirectToAction("index", "manage");
         }
+
         [Authorize]
         public ActionResult Remove(string id) {
-
             var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
             ObjectId obj = new MongoDB.Bson.ObjectId(id);
             _collection.DeleteOne(x => x.Id == obj);
 
-
             return RedirectToAction("index", "manage");
         }
+
         [Authorize]
         public ActionResult Edit(string id) {
             //   var things = _collection.Find(x => x.Name != null && x.Name != "").ToList();
@@ -116,10 +104,10 @@ namespace AppHarborMongoDBDemo {
             return View(thing);
         }
 
-
         public ManageController() {
             _collection = Database.GetCollection<Thingy>("Thingies");
         }
+
         [Authorize]
         public ActionResult Instagram() {
             string id = "sorokin_sad";
@@ -138,11 +126,8 @@ namespace AppHarborMongoDBDemo {
                             imageObject = value.Value<JObject>("images").Value<JObject>("low_resolution");
 
                         string imageUrl = imageObject.Value<string>("url");
-
                         var caption = value.Value<JObject>("caption");
-
                         string description = caption == null ? "" : caption.GetValue("text").ToString();
-
                         var array = ImageHelper.GetImage(imageUrl);
 
                         Thingy thing = new Thingy() {

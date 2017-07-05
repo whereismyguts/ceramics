@@ -1,0 +1,24 @@
+[
+  {
+    "outputFileName": "Scripts/manage.min.js",
+    "inputFiles": [
+      "Scripts/manage.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/sad.min.js",
+    "inputFiles": [
+      "Scripts/sad.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bundle.js",
+    "inputFiles": [
+      "Scripts/jquery-latest.min.js",
+      "Scripts/jquery.uploadfile.min.js",
+      "Scripts/manage.js",
+      "Scripts/sad.js",
+      "Scripts/slick.min.js"
+    ]
+  }
+]
