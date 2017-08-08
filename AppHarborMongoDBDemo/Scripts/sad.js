@@ -85,6 +85,11 @@ $(window).scroll(function () {
     }
 });
 
+$('#share-buttons').on('click hover', function () {
+    $(".share-button").toggle( );
+    //$('.share-button').css('display', 'block');
+});
+
 function buyItem(id) {
     $.ajax({
         type: "POST",

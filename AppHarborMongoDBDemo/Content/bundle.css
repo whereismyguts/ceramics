@@ -219,6 +219,7 @@ textarea {
     -webkit-flex-wrap: wrap;
     justify-content: center;
     -ms-flex-pack: center;
+    margin-top:50px;
 }
 
 .tile-item * {
@@ -236,7 +237,7 @@ textarea {
     /*padding: 10%;*/
     box-sizing: border-box;
     position: relative;
-    border-radius: 10%;
+    /*border-radius: 10%;*/
 }
 
 
@@ -255,7 +256,7 @@ textarea {
         right: -100px;
         height: 100%;
         margin: auto;
-        border-radius: 10%;
+        /*border-radius: 10%;*/
     }
 
 .tile-item-title {
@@ -449,7 +450,6 @@ input, textarea {
 
 
 
-
 @media screen and (max-width:380px) {
     .cart-sidebar {
         width: 100% !important;
@@ -626,7 +626,29 @@ input, textarea {
     top: 0;
     margin: auto;
     margin-top: 10px;
+    /*display:inline-block;*/
 }
+
+#share-buttons::before {
+    content:"";
+}
+#share-buttons {
+    
+    width:20px;
+    top:60px;
+    position:fixed;
+        width: 35px;
+        height: 35px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #eee;
+    padding:5px;
+    box-sizing:border-box
+}
+.share-button {
+    display:none;
+}
+
 .item-content h1 {
     text-align:center;
 }
