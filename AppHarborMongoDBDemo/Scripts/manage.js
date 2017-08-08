@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('.image-container').slick();
+   // $('.image-container').slick();
 
     var settings = {
         url: "/Manage/RememberImage",

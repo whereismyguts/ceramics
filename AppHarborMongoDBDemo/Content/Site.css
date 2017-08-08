@@ -432,6 +432,7 @@ input, textarea {
     margin: auto;
     margin-top: 50px;
     position: relative;
+    margin-bottom: 70px;
 }
 
 .image-container {
@@ -567,31 +568,30 @@ input, textarea {
 }*/
 
 .button {
-    /*height: 26px;*/
-    border: 0;
+   border: 0;
     margin: 0;
     padding: 10px 12px;
-    background: #488792;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#569ea7), to(#3a707d));
-    background: -webkit-linear-gradient(270deg, #569ea7, #3a707d 100%);
-    background: -moz-linear-gradient(270deg,#569ea7, #3a707d 100%);
-    background: -ms-linear-gradient(270deg,#569ea7, #3a707d 100%);
-    background: -o-linear-gradient(270deg,#569ea7, #3a707d 100%);
-    background: linear-gradient(180deg,#569ea7, #3a707d 100%);
-    color: #fff;
+    /* background: #488792; */
+    /* background: -webkit-gradient(linear,0% 0%,0% 100%,from(#569ea7),to(#3a707d)); */
+    /* background: -webkit-linear-gradient(270deg,#569ea7,#3a707d 100%); */
+    background: -moz-linear-gradient(270deg,#569ea7,#3a707d 100%);
+    background: -ms-linear-gradient(270deg,#569ea7,#3a707d 100%);
+    background: -o-linear-gradient(270deg,#569ea7,#3a707d 100%);
+    /* background: linear-gradient(180deg,#569ea7,#3a707d 100%); */
+    /* color: #fff; */
     cursor: pointer;
-    font-family: Helvetica, Arial, "Liberation Sans", "Bitstream Vera Sans", sans-serif;
+    font-family: Helvetica,Arial,"Liberation Sans","Bitstream Vera Sans",sans-serif;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
-    text-shadow: -1px -1px rgba(0, 0, 0, .3);
+    /* text-shadow: -1px -1px rgba(0,0,0,.3); */
     text-transform: uppercase;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 }
 
     .button:hover {
@@ -622,10 +622,14 @@ input, textarea {
     width: 50%;
     max-width: 70px;
     right: 0;
-    position: absolute;
+    left: 0;
     top: 0;
+    margin: auto;
+    margin-top: 10px;
 }
-
+.item-content h1 {
+    text-align:center;
+}
 .buy-line {
     margin-top: 10px;
     position: relative;
@@ -639,7 +643,7 @@ input, textarea {
     letter-spacing: 1px;
     width: auto;
     font-size: 18px;
-    min-height: 100px;
+    min-height: 70px;
     /*margin-right: 100px;*/
 }
 

@@ -1,6 +1,12 @@
 ﻿$(document).ready(function () {
-    $('.image-container').slick();
-    $('.main-image').slick({ arrows: false, dots: true, autoplay: true });
+
+    var itemSlider = $('.image-container');
+    if (itemSlider.length != 0)
+        itemSlider.slick();
+
+    var mainSlider = $('.main-image');
+    if (mainSlider.length != 0)
+        mainSlider.slick({ arrows: false, dots: true, autoplay: true });
     refreshCart(false, false);
 });
 function countCardItem(id, count) {
