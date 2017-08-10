@@ -1,5 +1,10 @@
 ﻿$(document).ready(function () {
 
+   // $(".main-image-item").lazyload();
+    $("img").lazyload({
+        effect: "fadeIn"
+    });
+
     var itemSlider = $('.image-container');
     if (itemSlider.length != 0)
         itemSlider.slick();
@@ -9,6 +14,8 @@
         mainSlider.slick({ arrows: false, dots: true, autoplay: true });
     refreshCart(false, false);
 });
+
+
 function countCardItem(id, count) {
     $.ajax({
         type: "POST",

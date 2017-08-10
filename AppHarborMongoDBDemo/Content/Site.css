@@ -219,7 +219,7 @@ textarea {
     -webkit-flex-wrap: wrap;
     justify-content: center;
     -ms-flex-pack: center;
-    margin-top:50px;
+    /*margin-top:50px;*/
 }
 
 .tile-item * {
@@ -228,16 +228,12 @@ textarea {
 
 .tile-item {
     display: block;
-    margin: 5px;
+    margin: 1px;
     overflow: hidden;
     position: relative;
-    width: 15%;
-    /*width: 10%;*/
-    /*height:50px;*/
-    /*padding: 10%;*/
+    width: 24vw;
     box-sizing: border-box;
     position: relative;
-    /*border-radius: 10%;*/
 }
 
 
@@ -281,24 +277,42 @@ textarea {
         background-color: rgba(255, 255, 255, 0.5);
     }
 
+.social-links {
+    position:absolute;
+}
+
+
 .logo:hover {
     /*filter:blur(3px);*/
 }
 
+/*.logo:after {
+    content: 'Авторская керамика';
+    top: 4vh;
+    position: absolute;
+    left: 140%;
+    width: 30vw;
+    font-family: RobotoThin;
+    font-size: 3vw;
+    font-weight:900;
+}*/
 .logo {
-    display: block;
-    box-sizing: border-box;
+  display: block;
     z-index: 1;
-    width: 80px;
-    height: 35px;
+    width: 20%;
+    min-width: 70px;
+    max-width: 100px;
+    height: 10%;
     top: 0;
-    /*margin:auto;*/
+    left: 0;
+    right: 0;
+    margin: auto;
     background-color: transparent;
-    background-position: center;
-    background-size: 50px;
+    background-position: center top;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-image: url(logo.png);
-    /*outline:1px solid #3a707d;*/
+    position: absolute;
 }
 
 .header-menu-item {
@@ -324,26 +338,36 @@ textarea {
         font-size: 15px;
     }
 
-.social-links a:hover {
+    .header-menu-item img {
+        width:20px;
+    }
+
+
+#vk-link:hover {
     fill: #3a707d;
+}
+#inst-link:hover {
+    fill: #d10869;
 }
 
 .social-links a {
     display: inline-block;
-    width: 17px;
+    width: 15%;
+    min-width: 20px;
     margin: 0;
     cursor: pointer;
 }
 
 .social-links {
-    z-index: 1;
+       z-index: 1;
     position: absolute;
     top: 7px;
-    left: 3px;
-    width: 45px;
+    right: 3px;
+    text-align:right;
+    width: 20%;
+    min-width: 100px;
     margin: 0;
-    height: 20px;
-    /*outline: 1px solid #333;*/
+    height: 40px;
 }
 
 a {
@@ -361,7 +385,7 @@ img {
 .header-menu {
     /*outline:1px solid #333;*/
     /*background: rgba(151, 151, 151, 0.3);*/
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     width: 100%;
     z-index: 1;
@@ -436,8 +460,13 @@ input, textarea {
     margin-bottom: 70px;
 }
 
+.image-container img {
+       max-height: 340px;
+       margin:auto;
+}
 .image-container {
-    /*height: 440px;*/
+    /*max-height: 340px;*/
+        
     width: 100%;
     margin-bottom: 20px;
 }
@@ -484,7 +513,7 @@ input, textarea {
         animation-timing-function: ease-in;
         /*animation: 0.5s rollin;*/
         position: fixed;
-        top: 40px;
+        top: 80px;
         padding: 10px;
         border-radius: 3px;
         /*right:0;*/
@@ -502,11 +531,11 @@ input, textarea {
     }
 
     #show-cart {
-        /*background-color: #eee;*/
-        position: fixed !important;
-        top: 0;
-        right: 0;
-        width: 30px;
+    position: fixed !important;
+    top: 80px;
+    right: 3px;
+    width: 30px;
+    background-color: rgba(238, 238, 238, 1);
     }
 
     .cart-sidebar {
@@ -635,7 +664,7 @@ input, textarea {
 #share-buttons {
     
     width:20px;
-    top:60px;
+    top:90px;
     position:fixed;
         width: 35px;
         height: 35px;
@@ -776,6 +805,10 @@ td {
 }
 
 
+.process h1, .contact h1 {
+    line-height:normal;
+}
+
 .process, .contact {
     display: block;
     margin: auto;
@@ -783,11 +816,12 @@ td {
     min-width: 300px;
     background-color: #eee;
     padding: 10px 10px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     line-height: 20px;
     word-wrap: break-word;
     text-align: justify;
     padding-bottom: 50px;
+    padding-top: 70px;
 }
 
     .process img {

@@ -10,8 +10,6 @@
     <link href="~/Content/uploadfile.css" rel="stylesheet">*@
 </head>
 
-
-
 <body>
     <div class="header-menu">
         <a href="/manage" class="header-menu-item"><span> CMS </span></a>
@@ -19,18 +17,14 @@
         <a href="/manage/instagram" class="header-menu-item"><span> Update </span></a>
         @*<a href="/work" class="header-menu-item"><span> Связаться </span></a>*@
     </div>
-    <p style="margin-top:35px; margin-left:20px;">Добро пожаловать, @(HttpContext.Current.User.Identity.Name). </p>
+    <p style="margin-top:35px; margin-left:20px;">Welcome, @(HttpContext.Current.User.Identity.Name). 
+    <a href="/account/LogOut"> Exit </a>
+    </p>
     @RenderBody()
 
     <script src="~/Scripts/bundle.min.js"></script>
     @*<script src="~/Scripts/jquery-latest.min.js" type="text/javascript"></script>
     <script src="~/Scripts/slick.min.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.uploadfile.min.js" type="text/javascript"></script>*@
-
-    <script>
-      
-
-
-    </script>
 </body>
 </html>

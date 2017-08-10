@@ -33,8 +33,8 @@ namespace AppHarborMongoDBDemo.Controllers {
                     ObjectId obj = new MongoDB.Bson.ObjectId(itemId);
                     //   var results = _collection.Find(x => x.Name != "").ToList();
                     Thingy thing = _collection.Find(x => x.Id == obj).FirstOrDefault();
-                    if(thing!=null)
-                    results.Add(thing);
+                    if(thing != null)
+                        results.Add(thing);
                 }
             }
             catch { }
@@ -68,7 +68,7 @@ namespace AppHarborMongoDBDemo.Controllers {
         public ActionResult AddToCart(string itemId) {
             var objId = new ObjectId(itemId);
             var c = Request.Cookies.Get("cart");
-            if(c==null ||  Request.Cookies["cart"].Value == null || Request.Cookies["cart"].Value == "") {
+            if(c == null || Request.Cookies["cart"].Value == null || Request.Cookies["cart"].Value == "") {
                 var cookie = new HttpCookie("cart", GetNewClientId());
                 cookie.Expires = System.DateTime.Now.AddMonths(1);
                 Response.Cookies.Set(cookie);

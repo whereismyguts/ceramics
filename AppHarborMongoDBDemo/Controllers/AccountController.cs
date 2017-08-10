@@ -10,13 +10,11 @@ namespace AppHarborMongoDBDemo {
 
         static string returnUrl;
         public ActionResult Login(Account model) {
-
-            if(string.IsNullOrEmpty( returnUrl) && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
-                returnUrl = Request.QueryString["ReturnUrl"]; 
+            if(string.IsNullOrEmpty(returnUrl) && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+                returnUrl = Request.QueryString["ReturnUrl"];
 
             if(model.IsEmpty)
                 return View();
-
 
             if(model.Login == "x" && model.Password == "x") {
                 FormsAuthentication.SetAuthCookie(model.Login, false);
@@ -28,6 +26,11 @@ namespace AppHarborMongoDBDemo {
             }
 
             return View();
+        }
+        [Authorize]
+        public ActionResult LogOut() {
+            FormsAuthentication.SignOut();
+                return RedirectToAction("index", "manage");
         }
     }
 

@@ -32,8 +32,8 @@ namespace AppHarborMongoDBDemo {
             return RedirectToAction("Index");
         }
 
-        public ActionResult Work( ) {
-              return View();
+        public ActionResult Work() {
+            return View();
         }
         public ActionResult Contact() {
             return View();

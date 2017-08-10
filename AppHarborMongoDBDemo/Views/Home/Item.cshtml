@@ -1,21 +1,20 @@
 ﻿@model Thingy
 @{
-    ViewBag.Title = "- "+ Model.Name;
+    ViewBag.Title = "- " + Model.Name;
 }
 
 
 @*<head>
-    <title></title>
-</head>*@
+        <title></title>
+    </head>*@
 
-    @Html.Partial("~/Views/Shared/_Item.cshtml", Model)
+@Html.Partial("~/Views/Shared/_Item.cshtml", Model)
 
-    <h1 style="text-align:center; margin: 20px">Другие изделия:</h1>
-    @Html.Partial("~/Views/Shared/_ItemsList.cshtml", @WebDataProvider.Things(Model.Id.ToString()))
+<h1 style="text-align:center; margin: 20px">Другие изделия:</h1>
+@Html.Partial("~/Views/Shared/_ItemsList.cshtml", @WebDataProvider.Things(Model.Id.ToString()))
 
 <div id="share-buttons" class="a2a_kit a2a_kit_size_32 a2a_default_style">
     <i class="material-icons">share</i>
-    
     <a class="share-button a2a_button_facebook"></a>
     <a class="share-button a2a_button_twitter"></a>
     <a class="share-button a2a_button_vk"></a>

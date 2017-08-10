@@ -22,9 +22,10 @@
 });
 
 function removeImage(id, elem) {
+    //alert(id);
     $.ajax({
         type: "POST",
-        url: "Manage/RemoveImage",
+        url: "/Manage/RemoveImage",
         data: { id: id },
         success: function (res) {
             if (res === "removed") {

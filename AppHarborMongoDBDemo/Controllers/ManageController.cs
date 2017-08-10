@@ -18,8 +18,8 @@ namespace AppHarborMongoDBDemo {
         private readonly IMongoCollection<Thingy> _collection;
 
         [HttpPost, Authorize]
-        public ActionResult RemoveImage(int id) {
-            ImagesToRemove.Add(id.ToString());
+        public ActionResult RemoveImage(string id) {
+            ImagesToRemove.Add(id);
             return Json("removed");
         }
 
@@ -34,6 +34,7 @@ namespace AppHarborMongoDBDemo {
             }
             return Json(true);
         }
+
 
         [HttpPost, Authorize]
         public ActionResult RememberImage() {

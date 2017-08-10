@@ -6,8 +6,9 @@
 }
 
 <div class="items-table">
-    <h2>Все штуки</h2>
-    <table  cellspacing="0">
+    <h2>All things</h2>
+
+    <table cellspacing="0">
         <thead>
             <tr><th></th><th></th></tr>
         </thead>
@@ -15,17 +16,17 @@
 
             @foreach(var thing in collection) {
                 <tr>
-                    <td>@thing.Name</td>
+                    <td><a href="/item/@thing.Id"> @thing.Name</a> </td>
                     <td>@thing.Price</td>
                     <td title="@thing.Description">@thing.Description</td>
                     <td>
                         @if(thing.Images != null && thing.Images.Count > 0) {
-                            <img  src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
+                            <img src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
                         }
                     </td>
 
-                    <td><a href="/edit/@thing.Id">Редактировать</a></td>
-                    <td><a href="/remove/@thing.Id">Удалить</a></td>
+                    <td><a class="button" href="/edit/@thing.Id">edit</a></td>
+                    <td><a class="button" href="/remove/@thing.Id">delete</a></td>
                 </tr>
             }
         </tbody>
@@ -39,7 +40,7 @@
 
 
 <div id="new-item">
-    <h1>Добавить новую штуку</h1>
+    <h1>Add new thing</h1>
     @using(Html.BeginForm("Create", "Manage")) {
         <p>
             @Html.LabelFor(x => x.Name)
