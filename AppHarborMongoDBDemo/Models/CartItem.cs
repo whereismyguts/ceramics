@@ -10,6 +10,10 @@ namespace AppHarborMongoDBDemo {
         public Thingy Thing { get; set; }
         public int Count { get; set; } = 1;
         public int Price { get { return Thing.Price * Count; } }
+
+        public override string ToString() {
+            return Thing.ToString() + " - " + Count + " шт. ("+Price+" р)";
+        }
     }
 
     public class CartItems {
@@ -26,6 +30,16 @@ namespace AppHarborMongoDBDemo {
             }
             else
                 Items.Add(new CartItem(thing));
+
+
+           // Items.Sort();
+        }
+
+        public override string ToString() {
+            string res = "";
+            foreach(var item in Items)
+                res += item.ToString() + "\n";
+            return res;
         }
     }
 }

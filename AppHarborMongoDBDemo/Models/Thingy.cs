@@ -10,5 +10,10 @@ namespace AppHarborMongoDBDemo
         public string Tags { get; set; } = string.Empty;
         public int Price { get; set; }
         public List<byte[]> Images { get; internal set; }
+
+        public override string ToString() {
+            return Name+" ("+Price+" р)";
+        }
+
     }
 }

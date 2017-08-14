@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <td></td>
+                <td></td>
                 <td>Цена за шт.</td>
                 <td>Всего</td>
                 <td></td>
@@ -23,27 +24,34 @@
                 <td></td>
             </tr>
         </thead>
+
+
         @foreach(var item in Model.Items) {
             <tr>
-                <td style="width:100px">
+                <td style="width:200px">
                     <a href="/item/@item.Thing.Id"> @item.Thing.Name  </a>
                 </td>
-                <td>@item.Thing.Price ₽</td>
-                <td> @item.Price ₽</td>
+                <td >
+                    <div class="thumbnail"  style="width:50px; height:50px">
+                        <img src="data:image/png;base64,  @Convert.ToBase64String(item.Thing.Images[0])">
+                    </div>
+                </td>
+                <td style="width:50px">@item.Thing.Price ₽</td>
+                <td style="width:50px"> @item.Price ₽</td>
                 <td>
                     <i style="color:indianred" class="material-icons" onclick="countCardItem('@item.Thing.Id', -1)">remove_circle</i>
                 </td>
-                <td> @item.Count шт.</td>
+                <td style="width:40px"> @item.Count шт.</td>
                 <td><i style="color:darkseagreen" class="material-icons" onclick="countCardItem('@item.Thing.Id', 1)">add_circle</i></td>
                 <td>
-                    <i style="color:indianred" onclick="removeCardItem('@item.Thing.Id')" class="material-icons">clear</i>
+                    <i style="color:indianred" onclick="if(confirm('Удалить из корзины?')) removeCardItem('@item.Thing.Id')" class="material-icons">clear</i>
                 </td>
             </tr>
         }
     </table>
     <p>
         Всего: @Model.Price ₽
-        <div onclick="window.location.href='/order'" class="button">Оформить заказ</div>
+        <div onclick="window.location.href='/cart/order'" class="button" id="process-order">Оформить заказ</div>
     </p>
 }
 else {

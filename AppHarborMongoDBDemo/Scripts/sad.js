@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+
+
    // $(".main-image-item").lazyload();
     $("img").lazyload({
         effect: "fadeIn"
@@ -13,6 +15,10 @@
     if (mainSlider.length != 0)
         mainSlider.slick({ arrows: false, dots: true, autoplay: true });
     refreshCart(false, false);
+
+
+    $('body').toggleClass('splash');
+
 });
 
 
@@ -43,7 +49,7 @@ function removeCardItem(id) {
 function refreshCart(shouldShowCart, shouldAnimate) {
     $.ajax({
         type: "POST",
-        url: "/Cart/GetCartItems",
+        url: "/Cart/GetCartItemsView",
         success: function (res) {
             if (res) {
                 $('.cart-sidebar').empty();
