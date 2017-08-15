@@ -1,6 +1,6 @@
 ﻿@model CartItems
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <head>
@@ -8,20 +8,16 @@
 <div class="contact">
     
     <h1>Оформление заказа</h1>
-    
-    
+     
+
 
     <h2>Подробности</h2>
     <form method="post">
         <div class="cart-sidebar order-cart"></div>
         @*@Html.Partial("~/Views/Shared/_CartItemsList.cshtml", Model)*@
-        <input name="client_name" required="required" type="text" placeholder="Представтесь" />
-        <textarea name="comment" required="required" placeholder="Комментарий к заказу, контактные данные"></textarea>
-
-
-
-
-
+        <input name="client_name" required="required" type="text" placeholder="Как вас зовут?" />
+        <input name="client_email" required="required" type="text" placeholder="Электронная почта" />
+        <textarea name="comment" required="required" placeholder="Другие способы связи, пожелания, предложения, комментарии, мысли"></textarea>
 
         <style>
             .order-cart {
@@ -66,7 +62,7 @@
             <a href="/" class="button">Что у вас есть?</a>
         }
         else {
-        <button class="button"  type="submit">Я беру!</button>
+        <button class="button"  type="submit">все правильно, свяжитесь со мной</button>
         }
 
     </form>

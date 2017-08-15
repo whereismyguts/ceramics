@@ -4,6 +4,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,26 +29,45 @@ namespace AppHarborMongoDBDemo.Controllers {
 
             if(!string.IsNullOrEmpty(comment) && !string.IsNullOrEmpty(name)) {
                 SendMail(comment, name, GetCartItems());
-                ClearCart();
+                ProcessOrder(c.Value);
                 return RedirectToAction("index", "home");
             }
             else
                 return View(GetCartItems());
         }
 
+        private void ProcessOrder(string clientId) {
+            //IMongoCollection<UserCart> cartsCollection = Database.GetCollection<UserCart>("Carts");
+            //UserCart cart = cartsCollection.Find(x => x.UserId == userId).FirstOrDefault();
+            //if(cart == null) {
+            //    cart = new UserCart(userId, itemId);
+            //    cartsCollection.InsertOne(cart);
+            //}
+            //else {
+            //    cart.Items.Add(itemId);
+            //    cartsCollection.ReplaceOne(x => x.Id == cart.Id, cart);
+            //}
+            //return Json(cart.Items);
+            ClearCart();
+        }
+
+        string MailGunKey {
+            get { return ConfigurationManager.AppSettings.Get("MAILGUN_KEY") ?? Properties.Settings.Default.MAILGUN_KEY; }
+        }
+
         private void SendMail(string comment, string name, CartItems cartItems) {
             RestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
-            new HttpBasicAuthenticator("api",
-                                      "key-8e6fd07f55d3c0a633afc7b102c3ebd2");
+            new HttpBasicAuthenticator("api", MailGunKey);
             RestRequest request = new RestRequest();
             request.AddParameter("domain", "sandbox21f47bff07d246a08a1cdd9e7a7b485d.mailgun.org", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
-            request.AddParameter("from", "New Ceramic order <postmaster@sandbox21f47bff07d246a08a1cdd9e7a7b485d.mailgun.org>");
+            request.AddParameter("from", "Sorokin Sad Notification <postmaster@sandbox21f47bff07d246a08a1cdd9e7a7b485d.mailgun.org>");
             request.AddParameter("to", "tony <whereismyguts@gmail.com>");
-            request.AddParameter("subject", "Hello tony");
-            request.AddParameter("text",
+            request.AddParameter("subject", "New Ceramic Order");
+
+            request.AddParameter("html",
                 string.Format("Кто-то по имени {0} заказал:\n\n{1}\nКоментарий к заказу: \n{2}",
                 name, cartItems, comment));
             request.Method = Method.POST;

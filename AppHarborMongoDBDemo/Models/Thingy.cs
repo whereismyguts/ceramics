@@ -12,7 +12,7 @@ namespace AppHarborMongoDBDemo
         public List<byte[]> Images { get; internal set; }
 
         public override string ToString() {
-            return Name+" ("+Price+" р)";
+            return "<a href=\"/item/"+Id+"\">"+ Name + "</a>";
         }
 
     }

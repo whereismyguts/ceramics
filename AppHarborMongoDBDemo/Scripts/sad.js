@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
-
-
+    refreshCart(false, false);
 
    // $(".main-image-item").lazyload();
     $("img").lazyload({
@@ -14,8 +13,6 @@
     var mainSlider = $('.main-image');
     if (mainSlider.length != 0)
         mainSlider.slick({ arrows: false, dots: true, autoplay: true });
-    refreshCart(false, false);
-
 
     $('body').toggleClass('splash');
 
