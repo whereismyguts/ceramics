@@ -20,7 +20,7 @@ body, textarea, input {
 }
 
 body:not(.splash) {
-    animation: fadein 1s;
+    animation: fadein .5s;
 }
 
 .splash:before {
@@ -537,6 +537,7 @@ input, textarea {
     /*max-height: 340px;*/
     width: 100%;
     margin-bottom: 20px;
+     min-height: 340px;
 }
 
     .image-container div {
@@ -867,8 +868,26 @@ td {
     line-height: 2!important;
 }
 
+img {
+  /*transition: 0.3s;*/
+  animation:fadein ease-out 0.3s;
+}
 
-
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ /*[data-src]*/
+img[data-src] {
+    color:transparent;
+  box-sizing: border-box;
+  top:0; bottom:0;
+  margin:50%!important;
+  width:30px !important;height:30px!important;
+  border-radius: 50%!important;
+  border: 3px solid #aaa;
+  border-top-color: #3a3;
+  animation: spinner .5s linear infinite;
+}
 
 #show-cart, #hide-cart {
     position: absolute;

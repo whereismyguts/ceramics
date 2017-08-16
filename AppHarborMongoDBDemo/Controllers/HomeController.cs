@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Web;
 using System;
 using System.Text;
+using System.IO;
+using System.Drawing;
 
 namespace AppHarborMongoDBDemo {
     public class HomeController: BaseController {
@@ -40,6 +42,25 @@ namespace AppHarborMongoDBDemo {
         }
         public ActionResult Order() {
             return View();
+        }
+
+        public FileResult GetImage(string id) {
+            var folder = AppDomain.CurrentDomain.GetData("DataDirectory") + @"\pictures\";
+            if(!Directory.Exists(folder)) {
+                Directory.CreateDirectory(folder);
+            }
+
+            var path = Path.Combine(folder, id + ".jpg"); //validate the path for security or use other means to generate the path.
+
+            ObjectId objId = new MongoDB.Bson.ObjectId(id);
+            var thing = DbLayer.GetEntity("Thingies", objId);
+
+            if(thing != null) {
+                MemoryStream ms = new MemoryStream(thing.Images[0]);
+                var image = Image.FromStream(ms);
+                image.Save(path);
+            }
+            return base.File(path, "image/jpeg");
         }
     }
 }

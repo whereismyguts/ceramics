@@ -6,7 +6,9 @@
         @foreach(var thing in Model) {
             <a href="/item/@thing.Id" class="tile-item">
                 @if(thing.Images != null) {
-                    <img style="filter: hue-rotate(@(rnd.Next(-180,180))deg)"  alt="@thing.Name" src="data:image/png;base64,  @Convert.ToBase64String(thing.Images[0])">
+                    <img  
+                         data-src ="/Home/GetImage/@thing.Id.ToString()"
+                          style="filter: hue-rotate(@(rnd.Next(-80,80))deg)"  alt="@thing.Name" src="">
                 }
                 <div class="tile-item-title">@thing.Name</div>
             </a>

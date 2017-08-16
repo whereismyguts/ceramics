@@ -1,9 +1,11 @@
 ﻿$(document).ready(function () {
     refreshCart(false, false);
 
-   // $(".main-image-item").lazyload();
-    $("img").lazyload({
-        effect: "fadeIn"
+    [].forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
+        img.setAttribute('src', img.getAttribute('data-src'));
+        img.onload = function () {
+            img.removeAttribute('data-src');
+        };
     });
 
     var itemSlider = $('.image-container');
