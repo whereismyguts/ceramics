@@ -740,8 +740,16 @@ input, textarea {
     /*display:inline-block;*/
 }
 
+#share-buttons a {
+    border-radius:0;
+}
+
 #share-buttons::before {
     content: "";
+}
+
+#share-buttons i {
+    padding:5px;
 }
 
 #share-buttons {
@@ -753,11 +761,21 @@ input, textarea {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     background-color: #eee;
-    padding: 5px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
+.share-button a{
+    width:100px;
+}
+
+.share-button a{
+    display:block;
+    width:100px;
+}
+
 .share-button {
+    animation: fadein 0.5s ;
     display: none;
 }
 
