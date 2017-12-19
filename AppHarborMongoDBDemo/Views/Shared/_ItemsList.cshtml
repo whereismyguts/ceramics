@@ -7,7 +7,8 @@
             <a href="/item/@thing.Id" class="tile-item">
                     @if(thing.Images != null) {
                     <img data-src="/Home/GetImage/@thing.Id.ToString()"
-                         style="filter: hue-rotate(@(rnd.Next(-80, 80))deg)" alt="@thing.Name" src="">
+                         @*style="filter: hue-rotate(@(rnd.Next(-80, 80))deg)"*@ 
+                         alt = "@thing.Name" src = "" >
                     }
                 <div class="tile-item-title">@thing.Name</div>
             </a>
