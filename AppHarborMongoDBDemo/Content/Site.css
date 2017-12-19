@@ -197,7 +197,7 @@ textarea {
     .main-image-item img {
         opacity:0.7;
         width: 100%;
-        
+            min-height: 180px;
     }
 
     .main-image-item p {
@@ -289,6 +289,13 @@ textarea {
 .tile-item * {
     position: absolute;
 }
+
+/*.tiles-container .tile-item:nth-child(2n-1){
+    margin-top: 20px !important;
+}
+.tiles-container .tile-item:nth-child(2n){
+    margin-bottom: 20px !important;
+}*/
 
 .tile-item {
     display: block;
