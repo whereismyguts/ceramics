@@ -553,7 +553,17 @@ input, textarea {
     }
 
 
-
+/*.cart-sidebar:before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    background: #ddd;
+    opacity: 0.7;
+    z-index: 1;
+    right:0;
+    bottom: 0;
+    top: 0px;
+}*/
 
 @media screen and (max-width:380px) {
     .cart-sidebar {
@@ -609,7 +619,7 @@ input, textarea {
     #show-cart {
         position: fixed !important;
         top: 80px;
-        right: 3px;
+        right: 0px;
         width: 30px;
         background-color: rgba(238, 238, 238, 1);
     }
@@ -632,33 +642,37 @@ input, textarea {
     }
 }
 
-.slick-prev {
+.slick-next {
     left: -25px;
+}
+
+.slick-prev {
+    right: -25px;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-
-.slick-next {
-    right: -25px;
-}
-.slick-prev:before,.slick-next:before {
-    content:'>';
-    background-color: transparent;
-    position:absolute;
-    font-size:100px;
-    width:20px;
-    top:15px;
-    right:40px;
-    height:20px;
-    color:black;
-    font-family:'Comic Sans MS';
-}
+    /*.slick-prev:before,.slick-next:before {
+        content: '';
+        background: url(https://d30y9cdsu7xlg0.cloudfront.net/png/229906-200.png);
+        background-color: transparent;
+        background-position-x: 7px;
+        background-position-y: 0px;
+        background-size: 60px;
+        position: absolute;
+        font-size: 100px;
+        width: 70px;
+        top: 15px;
+        right: 40px;
+        height: 60px;
+        color: #000;
+        font-family: 'Comic Sans MS';
+    }*/
 .slick-prev, .slick-next {
     
-    /*background-image: url(https://image.flaticon.com/icons/png/128/25/25283.png);*/
+    background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/229906-200.png);
     background-size: contain;
     background-color: transparent;
     color: transparent;
@@ -985,6 +999,10 @@ button, .button {
     margin-bottom: 20px;
 }
 
+
+a[href="http://somee.com/VirtualServer.aspx"], a[href="http://somee.com"], div[style="opacity: 0.9; z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; height: 65px; right: 0px; display: block; width: 100%; background-color: #202020; margin: 0px; padding: 0px;"] {
+display:none!important;
+}
 /* Slider */
 .slick-slider
 {
