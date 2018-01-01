@@ -13,7 +13,11 @@ namespace AppHarborMongoDBDemo {
         }
 
         public static string MongoDbDatabaseName {
-            get { return ConfigurationManager.AppSettings.Get("CUSTOM_MONGOLAB_DATABASE") ?? "sorokin_sad"; }
+            get {
+
+                return "sorokin_sad";
+                // return ConfigurationManager.AppSettings.Get("CUSTOM_MONGOLAB_DATABASE") ?? "sorokin_sad"; 
+            }
         }
 
 
@@ -26,8 +30,8 @@ namespace AppHarborMongoDBDemo {
             }
         }
 
-        internal static Thingy GetEntity(string table, ObjectId id) {
-            var col =  Database.GetCollection<Thingy>(table);
+        internal static Thingy GetEntity (string table, ObjectId id) {
+            var col = Database.GetCollection<Thingy>(table);
             return col.Find(x => x.Id == id).FirstOrDefault();
         }
     }

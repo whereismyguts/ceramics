@@ -20,6 +20,7 @@ namespace AppHarborMongoDBDemo.Controllers {
         public ActionResult Order() {
             string comment = Request.Form["comment"];
             string name = Request.Form["client_name"];
+            string mail = Request.Form["client_email"];
             var c = Request.Cookies.Get("cart");
             if(c == null || Request.Cookies["cart"].Value == null || Request.Cookies["cart"].Value == "") {
                 CreateNewCookies("cart");
@@ -28,7 +29,7 @@ namespace AppHarborMongoDBDemo.Controllers {
                 Response.Cookies.Add(c);
 
             if(!string.IsNullOrEmpty(comment) && !string.IsNullOrEmpty(name)) {
-                SendMail(comment, name, GetCartItems());
+                SendMail(comment, name, GetCartItems(), mail);
                 ProcessOrder(c.Value);
                 return RedirectToAction("index", "home");
             }
@@ -55,7 +56,7 @@ namespace AppHarborMongoDBDemo.Controllers {
             get { return ConfigurationManager.AppSettings.Get("MAILGUN_KEY") ?? Properties.Settings.Default.MAILGUN_KEY; }
         }
 
-        private void SendMail(string comment, string name, CartItems cartItems) {
+        private void SendMail(string comment, string name, CartItems cartItems,string fromMail) {
             RestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
@@ -68,8 +69,8 @@ namespace AppHarborMongoDBDemo.Controllers {
             request.AddParameter("subject", "New Ceramic Order");
 
             request.AddParameter("html",
-                string.Format("Кто-то по имени {0} заказал:\n\n{1}\nКоментарий к заказу: \n{2}",
-                name, cartItems, comment));
+                string.Format("Кто-то по имени {0}({3}) заказал:\n\n{1}\nКоментарий к заказу: \n{2}",
+                name, cartItems, comment, fromMail));
             request.Method = Method.POST;
             client.Execute(request);
         }
