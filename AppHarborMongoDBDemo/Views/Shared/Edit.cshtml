@@ -6,7 +6,7 @@
 
 <div style="padding-left:20px;">
     <h1>Редактирование штуки</h1>
-    @using(Html.BeginForm("Update", "Manage", new { id = Model.Id }, FormMethod.Post, null)) {
+    @using (Html.BeginForm("Update", "Manage", new { id = Model.Id }, FormMethod.Post, null)) {
         <p >@Html.TextBoxFor(x => x.Id)</p>
         <p>
             @Html.LabelFor(x => x.Name)
@@ -19,11 +19,14 @@
             @Html.TextBoxFor(x => x.Tags)
 
             <div class="edit-item-old-images">
-                @foreach(var image in Model.Images) {
-                    <div class="thumbnail" onclick="removeImage('@Model.Id', this)">
+                @{ int i = 0;
+                foreach (var image in Model.Images) {
+                    <div class="thumbnail" onclick="removeImage('@i', this)">
                         <img src="data:image/png;base64,  @Convert.ToBase64String(image)">
                     </div>
-                }
+                        i++;
+                    }
+                    }
             </div>
             При загрузке новых фоток старые будут удалены
             <div id="mulitplefileuploader">Upload</div>

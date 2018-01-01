@@ -21,7 +21,8 @@ namespace AppHarborMongoDBDemo {
             get {
                 return
                     ConfigurationManager.AppSettings.Get("CUSTOM_MONGOLAB_URI") ??
-                    "mongodb://localhost/Things";
+                //    "mongodb://localhost/Things";
+                "mongodb://whereismyguts:VisualStudio15@ds115352.mlab.com:15352/sorokin_sad";
             }
         }
 
