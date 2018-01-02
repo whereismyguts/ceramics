@@ -7,4 +7,6 @@ deploy/*
 *.cache
 TestResults/
 packages/
+/.vs/*
 /AppHarborMongoDBDemo/App_Data/pictures/*
+applicationhost.config
